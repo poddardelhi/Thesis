@@ -1,0 +1,32 @@
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {estonian}{}
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{6}{section.1}
+\contentsline {section}{\numberline {2}Title of Section 2}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Title of Subsection 1}{7}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Title of Subsubsection 1}{7}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Title of Subsubsection 2}{7}{subsubsection.2.1.2}
+\contentsline {subsection}{\numberline {2.2}Title of Subsection 2}{7}{subsection.2.2}
+\contentsline {paragraph}{Type rules for integers.}{7}{section*.19}
+\contentsline {paragraph}{Type rules for rational numbers.}{7}{section*.20}
+\contentsline {subsection}{\numberline {2.3}How to use references}{7}{subsection.2.3}
+\contentsline {paragraph}{Cross-references to figures, tables and other document elements.}{7}{section*.21}
+\contentsline {paragraph}{Citations.}{8}{section*.22}
+\contentsline {section}{\numberline {3}How to add figures and pictures to your thesis}{9}{section.3}
+\contentsline {section}{\numberline {4}Other Ways to Represent Data}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Tables}{12}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Lists}{12}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Math mode}{12}{subsection.4.3}
+\contentsline {paragraph}{Inference Rules}{12}{section*.28}
+\contentsline {subsection}{\numberline {4.4}algorithm2e}{13}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Pseudocode}{13}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Frame Around Information}{13}{subsection.4.6}
+\contentsline {section}{\numberline {5}Conclusion}{14}{section.5}
+\contentsline {section}{References}{15}{section*.34}
+\contentsline {section}{Appendix}{16}{section*.35}
+\contentsline {subsection}{I. Glossary}{16}{section*.36}
+\babel@toc {english}{}
+\contentsline {subsection}{II. Licence}{17}{section*.37}
+\babel@toc {english}{}
