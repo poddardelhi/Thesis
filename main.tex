@@ -860,7 +860,7 @@ This optimization adopts the control plane to transmit device's data packets. In
 Since control plane manages to send data packets, the transmission or reception of messages is sent as NAS signaling messages between the device and MME. Compared to conventional Scheduling Requests (SR) procedure, the device avoids Access Strum (AS) security setup and user plane bearers establishment required in each data transfer. Hence, it is more suitable for short data transactions.
 After the device has transmitted the uplink data, the NAS signaling message encapsulates the data packet that includes Release Assistance Information (RAI) field. This RAI filed holds the additional data for MME to further notify the incoming uplink or downlink data. In such cases, the MME can immediately trigger the S1 Release procedure (unless user plane bearers between eNB and Serving Gateway (SGW) are established). Therefore, the RAI field enables the MME to reduce the period, the device is in DRX waiting for possible additional transmissions. It is to note, control panel does not currently allow the application servers to notify the MME if no further data transmissions are expected \cite{andres2017narrowband}.\par
 
-\paragraph{$User\  plane\  CIoT\  optimization$}
+\paragraph{$User\  plane\  CIoT\  optimization$} \label{RRC}
 User plane (UP) optimization is a alternative data transmission procedure. It requires an initial Radio Resource Control (RRC) connection to be established that configures the radio bearers and the AS security context between network and device. After this, UP enables the RRC connection to be suspended and resumed by means of two new control procedures: Connection Suspend and Resume.\par
 As device moves to RRC idle state, the connection suspend procedure enables to retain device's context at eNB, and MME. Later, at the time of new message, the device is able to resume connection without sending the initial overheads. To resume the RRC connection, the device provides a Resume ID to the eNB to query the last stored context. By means of storing the context, the device avoids AS security setup and RRC re-configuration in each data transmission, compared to conventional SR procedure \cite{farrell2018low,andres2017narrowband,popli2018survey}, see Figure \ref{fig:Sequence diagram of RRC resume cycle}.
 
@@ -881,7 +881,159 @@ The question of security for NB-IoT is very critical, since data from sensor dev
 NB-IoT derive two security levels from conventional LTE,
 namely: 1) Access Strum (AS) and 2) Non Access Stratum (NAS) security. AS establishes security between the UE and the eNB, whereas NAS security is established and managed by the devices and the mobility management entity (MME). AS and NAS provide security that are offered through ciphering and integrity algorithms listed in \cite{3GPPsecurity}. Specifically, 3GPP defines four ciphering algorithms, referred as EPS encryption algorithm (EEAs), and four integrity algorithms, referred as EPS integrity algorithm (EIA). The security configuration is performed after a negotiation between the UE and the eNB or MME, respectively, eNB and the MME have high priority for the ciphering and integrity algorithms, which are finally selected based on the security capabilities of the UE, whereas, NAS security is always configured before AS security, and both encryption and integrity algorithms are applied in NAS, the ciphering in AS is used for RRC and user plane (UP) while the integrity algorithm is applied only to RRC \cite{martinez2019exploring}.
 
-%\subsubsection{Over the Air Update (OTA)}
+\subsection{Overview of Radio Frequency Parameters}
+
+For the reference in this thesis, we have used various radio frequency parameters to base our analysis, in this subsection we try to explain briefly these metrics, and also provide the acceptable range accepted by 3GPP standars. Furthermore, RSSI, RSRP and RSRQ are categorized into four distinct classes of link quality: POOR, FAIR, GOOD and EXCELLENT. The exact corresponding values differ for NB-IoT and Sigfox in the analysis; the respective values have been detailed in Tables \ref{nbiotRSSI}-\ref{sigfoxRSSI} for RSSI;  Table \ref{nbiotRSRP} for RSRP; and Table \ref{nbiotRSRQ} for RSRQ and Table \ref{nbiotSINR} for SINR respectively below.
+
+
+\subsubsection{Received Signal Strength Indicator}
+Received Signal Strength Indicator (RSSI) or "Total  Power", is the radio  signal  strength  within  the  receive bandwidth. It is usually the power received by antenna, and is  calculated in dBm using an equation \ref{RSSI}.
+
+\begin{equation}
+      RSSI = {12 \times N \times RSRP}
+      \label{RSSI}
+\end{equation}
+Where, N= Number of PRBs and RSRP is reference signal received power.
+
+%----table 4----
+\begin{table}[h]
+
+\centering
+\caption {RSSI reference values for NB-IoT as per 3GPP standards \cite{3GPP,sikora2019performance}}
+
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\multicolumn{2}{|c|}{NB-IoT RSSI REFERENCES} \\ \hline
+ > −65 dBm                           & EXCELLENT                     \\ \hline
+−65 to −75 dBm                      & GOOD                          \\ \hline
+−75 to −85 dBm                      & FAIR                          \\ \hline
+< -85 dBm                           & POOR                          \\ \hline
+\end{tabular}
+\label{nbiotRSSI}
+
+\end{table}
+%----table 4 ends here----
+
+
+%----table 5-------
+\begin{table}[H]
+\caption {RSSI reference values for Sigfox \cite{sigfoxRSSI}}
+\centering
+\resizebox{0.744\columnwidth}{!}{
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{SIGFOX RSSI REFERENCES} \\ \hline
+> -122dBm                    & EXCELLENT     \\ \hline
+-135dBm < RSSI ≤ -122dBm     & GOOD          \\ \hline
+-122dBm < RSSI               & GOOD          \\ \hline
+\begin{tabular}[c]{@{}c@{}}-135dBm < RSSI ≤ -122dBm\\ (if data received by 1 or 2 base stations)\end{tabular} & FAIR \\ \hline
+RSSI ≤ -135dBm               & POOR          \\ \hline
+\end{tabular}}
+\label{sigfoxRSSI}
+\end{table}
+
+%----table 5 ends here----
+
+\subsubsection{Reference Signal Received Power}
+Reference Signal Received Power (RSRP) is similar to RSSI and refers to the average received power over the resource elements that carry cell-specific reference signals within  certain  frequency  bandwidth. RSRP is applicable to RRC\_idle and RRC\_connected states, refer section \ref{RRC}. It is measured in dBm and is calculated using the equation \ref{RSRP equation}.
+
+\begin{equation}
+    RSRP = {{RSSI - 10\times log (12\times N) }}
+    \label{RSRP equation}
+\end{equation}
+Where, 
+\begin{itemize}
+    \item N = Number of PRBs 
+    \item RSSI= Received Signal Strength Indicator(explained above).
+\end{itemize}
+
+
+
+%---table 6-----
+\begin{table}[h]
+\caption {RSRP reference values for NB-IoT as per 3GPP standards \cite{3GPP,sikora2019performance}}
+\centering
+
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\multicolumn{2}{|c|}{NB-IoT RSRP REFERENCE} \\ \hline
+> −84 dBm                            & EXCELLENT                    \\ \hline
+−85 to −102 dBm                      & GOOD                         \\ \hline
+−103 to −111 dBm                     & FAIR                         \\ \hline
+< -112                               & POOR                         \\ \hline
+\end{tabular}
+\label{nbiotRSRP}
+\end{table}
+
+%---table 6 ends here-----
+
+
+
+It should be noted in the below results that at higher values of RSRP, the BG96 has not calculated the RSSI, it should not be interpreted as packet loss; the same characteristics have been observed in other radio modules e.g., SARA-N210 \cite{basu2019experimental}, therefore the graphs below have breaks in RSSI values. Therefore, RSRP is a more suitable parameter to be considered. Nevertheless, we have tried to analyse the corresponding RSSI measurement as well whenever possible.
+
+\subsubsection{Reference Signal Received Quality}
+Reference Signal Received Quality (RSRQ) indicates the quality of received reference signal and is applicable only in RRC\_connected state (refer section \ref{RRC}). It is calculated in dB as per equation \ref{RSRQ equation}. 
+\begin{equation}
+     RSRQ= {{N\times} RSRP/ RSSI}
+     \label{RSRQ equation}
+\end{equation}
+\\ Where,
+\begin{itemize}
+    \item N: indicates the number of PRBs.
+\end{itemize}
+
+%---table 7 ----
+\begin{table}[!h]
+\caption {RSRQ reference values for NB-IoT as per 3GPP standards\cite{3GPP,sikora2019performance}}
+\centering
+
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\multicolumn{2}{|c|}{NB-IoT RSRQ REFERENCE} \\ \hline
+>−5 dB                 & EXCELLENT          \\ \hline
+-5 to -8 dB            & GOOD               \\ \hline
+-8 to -11 dB           & FAIR               \\ \hline
+< -11 dB               & POOR               \\ \hline
+\end{tabular}
+
+\label{nbiotRSRQ}
+\end{table}
+%---table 7 ends here ----
+
+\subsubsection{Signal to Interference Noise Ratio} Signal to Interference Noise Ratio, is the ratio of signal power and the noise power. It is measured in dB, and calculated using the equation \ref{SINR equation}. \par
+
+\begin{equation}
+       SINR={\dfrac{P}{(I+N)}}
+     \label{SINR equation}
+\end{equation}
+where, 
+\begin{itemize}
+    \item P: indicates the power of reference signal
+    \item I: indicates the average interference power
+    \item N: indicates the number of PRBs
+\end{itemize}
+
+%---table 8 SINR ----
+\begin{table}[H]
+\caption {SINR reference values for NB-IoT as per 3GPP standards\cite{3GPP,sikora2019performance}}
+\centering
+
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\multicolumn{2}{|c|}{NB-IoT SINR REFERENCE} \\ \hline
+> 12 dB                 & EXCELLENT          \\ \hline
+10 to 12.5 dB            & GOOD               \\ \hline
+7 to 10 dB           & FAIR               \\ \hline
+< 7 dB               & POOR               \\ \hline
+\end{tabular}
+
+\label{nbiotSINR}
+\end{table}
+%---table 8 ends here ----
+
+
+
+
 
 
 \subsection{Related Work}\label{related work}
@@ -1101,153 +1253,7 @@ To answer RQ2, we had inserted NB-IoT nodes with narrow band SIM cards from the 
 
 \subsection{Results}\label{results}
 
-This section evaluates the RF results of Sigfox and NB-IoT in three different scenarios i) Outdoor ii) Indoor, and iii) Deep-Indoor/Basement in two University campuses, University of Tartu and TalTech as aforementioned. The radio coverage depends on link budget and other radio parameters for e.g., transmission power, connector loss, antenna gain, the height of antenna that directly affects the overall coverage. Factors like free space path loss, fading reflection, refraction, building structure, and Fresnel zone also affects the coverage \cite{sikora2019test,sikora2019performance}. Therefore, results are outlined on the basis of 3-factor analysis by considering i) RSSI ii) RSRP and iii) RSRQ of the received signal as explained briefly below. Further, these RF metrics i.e., RSSI, RSRP and RSRQ are categorized into four distinct classes of link quality: POOR, FAIR, GOOD and EXCELLENT. The exact corresponding values differ for NB-IoT and Sigfox in the results; the respective values have been detailed in Tables \ref{nbiotRSSI}-\ref{sigfoxRSSI} for RSSI;  Table \ref{nbiotRSRP} for RSRP; and Table \ref{nbiotRSRQ} for RSRQ and Table \ref{nbiotSINR} for SINR.
-
-
-\paragraph{RSSI:}
-Received Signal Strength Indicator (RSSI) or "Total  Power", is the radio  signal  strength  within  the  receive bandwidth. It is usually the power received by antenna, and is  calculated in dBm using an equation \ref{RSSI} \cite{3GPP}.
-
-\begin{equation}
-      RSSI = {12 \times N \times RSRP}
-      \label{RSSI}
-\end{equation}
-Where, N= Number of PRBs and RSRP is reference signal received power.
-
-%----table 4----
-\begin{table}[h]
-
-\centering
-\caption {RSSI reference values for NB-IoT as per 3GPP standards \cite{3GPP,sikora2019performance}}
-
-\begin{tabular}{|p{5cm}|p{5cm}|}
-\hline
-\multicolumn{2}{|c|}{NB-IoT RSSI REFERENCES} \\ \hline
- > −65 dBm                           & EXCELLENT                     \\ \hline
-−65 to −75 dBm                      & GOOD                          \\ \hline
-−75 to −85 dBm                      & FAIR                          \\ \hline
-< -85 dBm                           & POOR                          \\ \hline
-\end{tabular}
-\label{nbiotRSSI}
-
-\end{table}
-%----table 4 ends here----
-
-
-%----table 5-------
-\begin{table}[H]
-\caption {RSSI reference values for Sigfox \cite{sigfoxRSSI}}
-\centering
-\resizebox{0.744\columnwidth}{!}{
-\begin{tabular}{|c|c|}
-\hline
-\multicolumn{2}{|c|}{SIGFOX RSSI REFERENCES} \\ \hline
-> -122dBm                    & EXCELLENT     \\ \hline
--135dBm < RSSI ≤ -122dBm     & GOOD          \\ \hline
--122dBm < RSSI               & GOOD          \\ \hline
-\begin{tabular}[c]{@{}c@{}}-135dBm < RSSI ≤ -122dBm\\ (if data received by 1 or 2 base stations)\end{tabular} & FAIR \\ \hline
-RSSI ≤ -135dBm               & POOR          \\ \hline
-\end{tabular}}
-\label{sigfoxRSSI}
-\end{table}
-
-%----table 5 ends here----
-
-\paragraph{RSRP:}
-Reference Signal Received Power (RSRP) is similar to RSSI and refers to the average received power over the resource elements that carry cell-specific reference signals within  certain  frequency  bandwidth. RSRP is applicable to RRC\_idle and RRC\_connected  states. It is measured in dBm and is calculated using the equation \ref{RSRP equation}.
-
-\begin{equation}
-    RSRP = {{RSSI - 10\times log (12\times N) }}
-    \label{RSRP equation}
-\end{equation}
-Where, 
-\begin{itemize}
-    \item N = Number of PRBs 
-    \item RSSI= Received Signal Strength Indicator(explained above).
-\end{itemize}
-
-
-
-%---table 6-----
-\begin{table}[h]
-\caption {RSRP reference values for NB-IoT as per 3GPP standards \cite{3GPP,sikora2019performance}}
-\centering
-
-\begin{tabular}{|p{5cm}|p{5cm}|}
-\hline
-\multicolumn{2}{|c|}{NB-IoT RSRP REFERENCE} \\ \hline
-> −84 dBm                            & EXCELLENT                    \\ \hline
-−85 to −102 dBm                      & GOOD                         \\ \hline
-−103 to −111 dBm                     & FAIR                         \\ \hline
-< -112                               & POOR                         \\ \hline
-\end{tabular}
-\label{nbiotRSRP}
-\end{table}
-
-%---table 6 ends here-----
-
-
-
-It should be noted in the below results that at higher values of RSRP, the BG96 has not calculated the RSSI, it should not be interpreted as packet loss; the same characteristics have been observed in other radio modules e.g., SARA-N210 \cite{basu2019experimental}, therefore the graphs below have breaks in RSSI values. Therefore, RSRP is a more suitable parameter to be considered. Nevertheless, we have tried to analyse the corresponding RSSI measurement as well whenever possible.
-
-\paragraph{RSRQ:}
-Reference Signal Received Quality (RSRQ) indicates the quality of received reference signal and is applicable only in RRC\_connected state. It is calculated in dB as per equation \ref{RSRQ equation}. 
-\begin{equation}
-     RSRQ= {{N\times} RSRP/ RSSI}
-     \label{RSRQ equation}
-\end{equation}
-\\ Where,
-\begin{itemize}
-    \item N: indicates the number of PRBs.
-\end{itemize}
-
-%---table 7 ----
-\begin{table}[!h]
-\caption {RSRQ reference values for NB-IoT as per 3GPP standards\cite{3GPP,sikora2019performance}}
-\centering
-
-\begin{tabular}{|p{5cm}|p{5cm}|}
-\hline
-\multicolumn{2}{|c|}{NB-IoT RSRQ REFERENCE} \\ \hline
->−5 dB                 & EXCELLENT          \\ \hline
--5 to -8 dB            & GOOD               \\ \hline
--8 to -11 dB           & FAIR               \\ \hline
-< -11 dB               & POOR               \\ \hline
-\end{tabular}
-
-\label{nbiotRSRQ}
-\end{table}
-%---table 7 ends here ----
-
-\paragraph{SINR:} Signal to Interference Noise Ratio, is the ratio of signal power and the noise power. It is measured in dB, and calculated using the equation \ref{SINR equation}. \par
-
-\begin{equation}
-       SINR={\dfrac{P}{(I+N)}}
-     \label{SINR equation}
-\end{equation}
-where, 
-\begin{itemize}
-    \item P: indicates the power of reference signal
-    \item I: indicates the average interference power
-    \item N: indicates the number of PRBs
-\end{itemize}
-
-%---table 8 SINR ----
-\begin{table}[H]
-\caption {SINR reference values for NB-IoT as per 3GPP standards\cite{3GPP,sikora2019performance}}
-\centering
-
-\begin{tabular}{|p{5cm}|p{5cm}|}
-\hline
-\multicolumn{2}{|c|}{NB-IoT SINR REFERENCE} \\ \hline
-> 12 dB                 & EXCELLENT          \\ \hline
-10 to 12.5 dB            & GOOD               \\ \hline
-7 to 10 dB           & FAIR               \\ \hline
-< 7 dB               & POOR               \\ \hline
-\end{tabular}
-
-\label{nbiotSINR}
-\end{table}
-%---table 8 ends here ----
+This section evaluates the RF results of Sigfox and NB-IoT in three different scenarios i) Outdoor ii) Indoor, and iii) Deep-Indoor/Basement in two University campuses, University of Tartu and TalTech as aforementioned. The radio coverage depends on link budget and other radio parameters for e.g., transmission power, connector loss, antenna gain, the height of antenna that directly affects the overall coverage. Factors like free space path loss, fading reflection, refraction, building structure, and Fresnel zone also affects the coverage \cite{sikora2019test,sikora2019performance}. Therefore, results are outlined on the basis of 3-factor analysis by considering i) RSSI ii) RSRP and iii) RSRQ of the received signal as explained briefly below.
 
 Furthermore, the results have been categorised below into three subsections based on the above three deployment scenarios.
 
