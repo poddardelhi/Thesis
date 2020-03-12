@@ -291,8 +291,8 @@ Informaatika õppekava\\%[2mm]
 
 \noindent
 Low Power Wide Area Networks (LPWANs) have become an important technology for the Internet of Things, as they provide radio coverage in the order of kilometers and enable battery-powered devices to operate for years.
-This thesis presents the in-depth technical overview along with results of an in-field investigation of the coverage analysis of two LPWAN technologies i.e., NB-IoT and Sigfox, conducted  in  Tartu and Tallinn. The observations are taken for the time span of 12-24 hours with the respected hardwares using NB-IoT sim-cards by two commercially available NB-IoT operators (Telia and Elisa) and the single Sigfox operator in Estonia. 
-Most of the existing literature on NB-IoT coverage is replete with RSSI-based coverage analyses. However, RSSI is most of the time not sufficient for evaluating LTE-based technologies including NB-IoT. Thus, our investigation of NB-IoT coverage considers three parameters: RSSI, RSRP, and RSRQ. Sigfox, being a non-LTE technology, we base our coverage analysis only on the RSSI factor.  Both technologies are evaluated in indoor, outdoor and deep-indoor/underground environments so as to provide an understanding of their coverage in various propagation and penetration conditions. Our results indicate that in outdoor scenarios, both Sigfox and NB-IoT achieve good to excellent coverage with almost 0\% packet losses. However, in indoor scenarios, few packet losses were observed in Sigfox while no packet losses were observed in NB-IoT, even with a weaker coverage, and possibly due to re-transmissions that is a salient feature of the NB-IoT making it more reliable than its competitive LPWAN technologies. However, in deep-indoor or underground scenarios, coverage outages were recorded for NB-IoT, especially in Tartu area, indicating its weaker coverage in that city.
+This thesis presents the in-depth technical overview along with results of an in-field investigation of the coverage analysis of two LPWAN technologies i.e., NB-IoT and Sigfox, conducted  in  Tartu and Tallinn. The observations are taken for the time span of 12-24 hours with the evaluation boards using NB-IoT sim-cards by two commercially available NB-IoT operators (Telia and Elisa) and the single Sigfox operator in Estonia. 
+Most of the existing literature on NB-IoT coverage is replete with Received Signal Strength Indicator (RSSI)-based coverage analyses. However, RSSI is most of the time not sufficient for evaluating LTE-based technologies including NB-IoT. Thus, our investigation of NB-IoT coverage considers three parameters: RSSI,Reference Signal Received Power (RSRP), and Reference Signal Received Quality (RSRQ). Sigfox, being a non-LTE technology, we base our coverage analysis only on the RSSI factor. Both technologies are evaluated in indoor, outdoor and deep-indoor/underground environments so as to provide an understanding of their coverage in various propagation and penetration conditions. Our results indicate that in outdoor scenarios, both Sigfox and NB-IoT achieve good to excellent coverage with almost 0\% packet losses. However, in indoor scenarios, few packet losses were observed in Sigfox while no packet losses were observed in NB-IoT, even with a weaker coverage, and possibly due to re-transmissions that is a salient feature of the NB-IoT making it more reliable than its competitive LPWAN technologies. However, in deep-indoor or underground scenarios, coverage outages were recorded for NB-IoT, especially in Tartu area, indicating its weaker coverage in that city.
 
 \vspace*{1ex}
 
@@ -1000,7 +1000,7 @@ Reference Signal Received Quality (RSRQ) indicates the quality of received refer
 \end{table}
 %---table 7 ends here ----
 
-\subsubsection{Signal to Interference Noise Ratio}\label{snr}
+\subsubsection{Signal to Interference Noise Ratio} \label{snr}
 Signal to Interference Noise Ratio, is the ratio of signal power and the noise power. It is measured in dB, and calculated using the equation \ref{SINR equation}. \par
 
 \begin{equation}
@@ -1569,24 +1569,24 @@ Figure \ref{fig:SINR distribution} present the signal to interference noise rati
 
 \subsubsection{Discussion}
 
-\newpage
-\section{Conclusion and Future Work} \label{conclusion}
-These experiments provided the comprehensive technical overview of Sigfox and NB-IoT, along with empirical results and study that investigated the current deployment of Sigfox and NB-IoT network in Estonia. Results from different scenarios i.e., Outdoor, Indoor, and Deep-Indoor were evaluated to find the answers for our foremost research questions. The results prove that, the radio parameters changes with respect to many physical factors like building structure, deployment scenarios, building occupancy in terms of active mobile users e.t.c, in indoor scenario, we had observed fluctuations in RSSI in both operators during the working hours; also similar observations were noticed in RSRP and RSRQ in deep-indoor scenarios. This indicates, the traffic from the active LTE users and neighboring small and macro cells affects the NB-IoT signal strengths, since they all are deployed in same PRB as discussed in section \ref{NB-IoT Technology} but similar fluctuation were not observed in Sigfox, due to the fact, it uses UNB technology  as discussed in section \ref{sigfox technical}.\par
+
+These experiments provided the comprehensive overview of the empirical results and study that investigated the current deployment of Sigfox and NB-IoT network in Estonia. Results from different scenarios i.e., Outdoor, Indoor, and Deep-Indoor were evaluated to find the answers for our foremost research questions. The results prove that, the radio parameters changes with respect to many physical factors like building structure, deployment scenarios, building occupancy in terms of active mobile users e.t.c, in indoor scenario, we had observed fluctuations in RSSI in both operators during the working hours; also similar observations were noticed in RSRP and RSRQ in deep-indoor scenarios. This indicates, the traffic from the active LTE users and neighboring small and macro cells affects the NB-IoT signal strengths, since they all are deployed in same PRB as discussed in section \ref{NB-IoT Technology} but similar fluctuation were not observed in Sigfox, due to the fact, it uses UNB technology  as discussed in section \ref{sigfox technical}.\par
 
 In indoor scenario, another most phenomenon case was observed at Delta building of University of Tartu, where there were no packet losses even though with very weaker coverage strength. This indicates NB-IoT is reliable over other competitive LPWAN technologies. However, this feature comes at the price of energy consumption due to repetitions of packets as we discussed previously in section \ref{NB-IoT Technology}. Futhermore, it was noted a important observation, some spots at University of Tartu had NB-IoT outages in-spite of good LTE coverage strength which indicates NB-IoT device registration depends on PRB of base station; also on deployment scheme i.e., in band, guard band or standalone configured by the MNO. \par
 
-As for deep-indoor coverage, the results were not impressive in UT campus; at UT the both operators had outages or packet losses as high as 61\%. The packet losses were more in Paabel compare to Delta building which indicates thick walls contribute to higher radio penetration losses as compare to newer dwelling structures. Similar observation were not recorded at TalTech campus which further indicates that there is dense narrow band coverage in Tallinn compare to Tartu at the time of writing this thesis.\par
+In deep-indoor coverage, the results were not impressive in UT campus; at UT the both operators had outages or packet losses as high as 61\%. The packet losses were more in Paabel compare to Delta building which indicates thick walls contribute to higher radio penetration losses as compare to newer dwelling structures. Similar observation were not recorded at TalTech campus which further indicates that there is dense narrow band coverage in Tallinn compare to Tartu at the time of writing this thesis.\par
 
-As for the outdoor coverage, it was observed that both technologies; sigfox and NB-IoT had a good to excellent coverage with 0\% packet losses in both campuses which was expected
+As for the outdoor coverage, it was observed that both technologies; sigfox and NB-IoT had a good to excellent coverage with 0\% packet losses in both campuses locations which was expected.\par
+These above inferences helped us to answer our RQ1 and RQ2, whose objective was to see how these LPWAN technologies perform in various scenarios and how these results are affected within the different mobile network operators (MNOs).
 
-As far as results are concerned, it was observed that both technologies; sigfox and NB-IoT had a good to excellent coverage with 0\% packet losses in both campuses which was expected. Some of IoT use-cases.\par
+To understand, the interference, among the co-existence deployment condition we measured the SINR parameter (detailed in section \ref{snr}) of two small clusters A and B, it was observed that SINR median value were higher for cluster B compared to cluster A (containing signgle device). Although, the difference is not so high considering our small scale setup, but this helped us to infer; interference due to co-existence deployment exists, thus answers to our RQ3. 
 
+\newpage
+\section{Conclusion and Future Work} \label{conclusion}
+ 
+This thesis provided the comprehensive technical over view, along withe real-time coverage analysis of NB-IoT and Sigfox in two university campuses of Estonia in two main cities (Tartu and Tallinn). We have based our analysis on multiple RF parameters since, RSSI is most of the time not sufficient for evaluating LTE-based technologies including NB-IoT. Thus, our investigation of NB-IoT coverage considers three parameters:  RSSI,RSRP, and RSRQ. Sigfox, being a non-LTE technology, we based our coverage analysis only on the RSSI factor. These technologies were evaluated in different scenarios indoor, outdoor and deep-indoor/underground environments to better comprehend their radio parameters so as to provide an understanding of their coverage in various propagation and penetration conditions. Our results prove that in outdoor scenarios, both Sigfox and NB-IoT achieved good to excellent coverage with almost0\% packet losses. However, in indoor scenarios, few packet losses were observed in Sigfox while no packet losses were observed in NB-IoT, even with a weaker coverage, possibly due to re-transmissions which makes NB-IoT more reliable than its competitive LPWAN technologies. However, in deep-indoor or underground scenarios, coverage outages were recorded for NB-IoT, especially in Tartu area, indicating its weaker coverage in that city.\par
 
-
-
-
-
-This thesis produces comprehensive overview of NB-IoT and Sigfox coverage recorded in different scenarios and the results  can  be  further  used as a reference point by operators, telecom engineers, students and researchers who are currently working on or interested in LPWAN technology.\par 
+These results can  be further used as a reference point by operators, telecom engineers, students and researchers who are currently working on or interested in LPWAN technology.\par 
 
 As a part of future works, there are many research topics that can be carried further:
 \begin{itemize}
@@ -1599,7 +1599,7 @@ As a part of future works, there are many research topics that can be carried fu
 \end{itemize}
 
 
-\emph{The work carried out in this thesis is submitted as a research paper titled "Coverage Analysis of NB-IoT and Sigfox: Two Estonian University Campuses as a Case Study" in 16\textsuperscript{th} International  Wireless Communications \& Mobile Computing Conference (IWCMC 2020), submitted in February 2020, under review}
+\emph{The work carried out in this thesis is submitted as a research paper titled "Coverage Analysis of NB-IoT and Sigfox: Two Estonian University Campuses as a Case Study" in 16\textsuperscript{th} International  Wireless Communications \& Mobile Computing Conference (IWCMC 2020), submitted in February 2020; status is under review.}
 
 
 \newpage
