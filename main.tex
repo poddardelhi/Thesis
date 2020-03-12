@@ -651,7 +651,7 @@ One      & 2 uplinks + no downlink   & 24                 \\ \hline
 \end{table}
 
 \paragraph{Duty cycle \& Sleep Mode}
-As per European Telecommunications Standards Institute (ETSI) regulations, there are restrictions imposed to the unlicensed frequencies in terms of payload transmission, according to it, Sigfox can utilize 1\% of sub-band in the 868 MHz EU ISM band \cite{etsi2012electromagnetic} allowing it to send maximum 140 uplink and 4 downlinks messages consisting of 12 bytes and 8 bytes of maximum payload length, respectively. Therefore, this concludes Sigfox device may only transmit 36 seconds per hour. The time on air is ~6 sec per package, which equals maximum 6 messages in 1 hour \cite{vejlgaard2017coverage,SigfoxTechnicalDoc,securitysigfoxwhitepaper}. This argument also hold valid for Sigfox that for every uplink message, there cannot be downlink message as acknowledgement. Figure \ref{fig:ETSI duty Cycle and Power restriction} illustrates the duty cycle and power restriction by ETSI for various un-licensed frequencies.\par
+As per European Telecommunications Standards Institute (ETSI) regulations, there are restrictions imposed to the unlicensed frequencies in terms of payload transmission, according to it, Sigfox can utilize 1\% of sub-band in the 868 MHz EU ISM band \cite{etsi2012electromagnetic} allowing it to send maximum 140 uplink and 4 downlinks messages consisting of 12 bytes and 8 bytes of maximum payload length, respectively. Therefore, this concludes Sigfox device can transmit only for 36 seconds per hour. The time on air roughly is ~6 sec per data, which equals maximum 6 messages in 1 hour \cite{vejlgaard2017coverage,SigfoxTechnicalDoc,securitysigfoxwhitepaper}. This argument also hold valid for Sigfox that for every uplink message, there cannot be downlink message as acknowledgement. Figure \ref{fig:ETSI duty Cycle and Power restriction} illustrates the duty cycle and power restriction by ETSI for various un-licensed frequencies.\par
 
 
 %duty-cycle defined by ETSI
@@ -1694,6 +1694,43 @@ UNB          & Ultra Narrow Band                             \\
 UT           & University of Tartu                          
 \end{tabular}}
 \end{table}
+\newpage
+
+
+%uvision Apendix
+\section*{II. Screenshots}
+\addcontentsline{toc}{subsection}{II. Screenshots}
+This appendix contains the screenshots of code snippets used for NB-IoT developmentt.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth,height=7cm,keepaspectratio]{Images/uvision/headerFile.pdf}
+    \caption{Partial screenshot of the header file (area in red refers the Ubidots API string) }
+ 
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth,height=7cm,keepaspectratio]{Images/uvision/BG96_attached.pdf}
+    \caption{Method for checking BG96 attached to network, in this case Telia/Elisa }
+    
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth,height=7cm,keepaspectratio]{Images/uvision/BG96_signal.pdf}
+    \caption{Method for calculating the RF parameters}
+    
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth,height=7cm,keepaspectratio]{Images/uvision/BG96_sendData.png}
+    \caption{Method for sending the data to Ubidots using UDP protocol}
+
+\end{figure}
+
+
 \newpage
 
 %=== Licence in English
