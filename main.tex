@@ -1425,7 +1425,7 @@ Figure \ref{RFIndoor Tartu} illustrates the RSSI, RSRP and RSRQ values in indoor
 \end{figure}
 %----figure 33 ends here----
 
-It was also observed in Delta buidling that with the increase in human occupancy in the building, which is directly proportional to active mobile users, there were fluctuations in the RSSI in both NB-IoT operators, This is due to the many reasons such as sampling rate, inter-PRB interference due to power leakage between NB-IoT and LTE PRBs \cite{mwakwata2019narrowband}. However, the same was not observed with Sigfox, which shows that Sigfox is unaffected by neighboring LTE interference and noises which is due to its ultra narrow band modulation.
+It was also observed in Delta building, that with the increase in human occupancy in the building, which is directly proportional to active mobile users, there were fluctuations in the RSSI in both NB-IoT operators, This is due to the many reasons such as sampling rate, inter-PRB interference due to power leakage between NB-IoT and LTE PRBs \cite{mwakwata2019narrowband}. However, the same was not observed with Sigfox, which shows that Sigfox is unaffected by neighboring LTE interference and noises which is due to its ultra narrow band modulation.
 
 
 %--- figure 34 starts here---
@@ -1458,8 +1458,10 @@ Furthermore, at TalTech campus, see Figure \ref{RFIndoor Tallinn}, it was observ
 
 For both campuses in indoor scenario, we have observed few packet losses in Sigfox compared to NB-IoT, which shows that even with weaker signal strength NB-IoT is reliable and resilient.\par
 
+It is important to note that, the values of RSRP were unstable in indoor scenarios compared to outdoor, worst stability was reflected for operator A in deep indoor \ref{boxplot}.
+
 \subsubsection{Coverage Analysis in Deep-Indoor Scenario} \label{deep-indoor analysis}
-To observe the coverage in Deep-Indoor scenario we had deployed the test-beds in basements or parking spots in Delta and Paabel building of UT and Taltech. The deployment is illustrated through the help of Figure \ref{fig:Deep-Indoor deployment}.
+To observe the coverage in Deep-Indoor scenario we had deployed the test devices in basements or parking spots in Delta and Paabel building of $University of Tartu$ and $Taltech$. The deployment is illustrated through the help of Figure \ref{fig:Deep-Indoor deployment}.
 
 %----figure 35 starts here----
 \begin{figure}[H]
@@ -1481,10 +1483,7 @@ To observe the coverage in Deep-Indoor scenario we had deployed the test-beds in
 \end{figure}
 %----figure 35 ends here----
 
-Furthermore, Figure \ref{RFDeepIndoorTartu} and Figure \ref{RFDeepIndoorTallinn} presents the RF coverage of NB-IoT and Sigfox in deep-indoor. It is interesting to note that NB-IoT $operator\ A$ had NB outage in $University\ of\ Tartu$ at Delta buidling. Therefore, it has been assigned value 0 for all corresponding RF parameters. However, on the other hand $operator\ B$ had maximum packet loss of 61\%, followed by Sigfox for same location that had 9\% packet loss. The average RSRP observed, see Figure \ref{boxplot}, at this site was -133 dBm for $operator\ B$ which quantifies to\ poor coverage. In addition to the above, at Paabel building of $University\ of\ Tartu$ there were 33\% of packet loss in case of NB-IoT $Operator\ B$, followed by 0\% packet loss in case of $operator\  A$, which confirms that $operator\ B$ has weaker deep indoor coverage penetration at this location.This observation also confirms, NB-IoT performances are affected by building structure and material used.\par
-Furthermore, the same outage and high packet loss was not observed in TalTech campus for NB-IoT which shows both operators $operator\ A$ and $operator\ B$ have dense narrow band network in that area at the time of writing this paper.
-
-
+Furthermore, Figure \ref{RFDeepIndoorTartu} and Figure \ref{RFDeepIndoorTallinn} presents the RF coverage of NB-IoT and Sigfox in deep-indoor. It is interesting to note that NB-IoT $operator\ A$ had NB outage in $University\ of\ Tartu$ at Delta building. Therefore, it has been assigned value 0 for all corresponding RF parameters. However, on the other hand $operator\ B$ had maximum packet loss of 61\%, followed by Sigfox for same location that had 9\% packet loss. The average RSRP observed, see Figure \ref{boxplot}, at this site was -133 dBm for $operator\ B$ which quantifies to\ poor coverage. In addition to the above, at Paabel building of $University\ of\ Tartu$ there were 33\% of packet loss in case of NB-IoT $Operator\ B$, followed by 0\% packet loss in case of $operator\  A$, which confirms that $operator\ B$ has weaker deep indoor coverage penetration at this location. This observation also confirms, NB-IoT performances are affected by building structure and material used.\par
 %---figure 36 starts here----
  \begin{figure}[H]
 \begin{subfigure}[t]{\linewidth}
@@ -1510,6 +1509,13 @@ Furthermore, the same outage and high packet loss was not observed in TalTech ca
  \label{RFDeepIndoorTartu}
 \end{figure}
 %---figure 36 ends here----
+
+It is also important to note, the coverage of NB-IoT $operator\ B$ drastically deteriorated in Paabel building during the working hours by 22 dBm in RSRP; similar pattern is seen in other parameters also, i.e., RSRQ and RSSI, where difference is 24 dB and 14 dBm respectively compare to working hours with non-working hours.\par
+
+Furthermore, the same outage and high packet loss was not observed in TalTech campus for NB-IoT which shows both operators $operator\ A$ and $operator\ B$ have dense narrow band network in that area at the time of writing this thesis.
+
+
+
 
 
 %---figure 37 starts here----
@@ -1565,7 +1571,7 @@ Figure \ref{fig:SINR distribution} present the signal to interference noise rati
 
 \newpage
 \section{Conclusion and Future Work} \label{conclusion}
-This thesis provides empirical study investigated under current deployment of Sigfox and NB-IoT network operated by two LTE operators and single Sigfox operator in Estonia. Experiments have been conducted in two Estonian university campuses in the two main cities of Estonia (Tartu and Tallinn). In Chapter \ref{technology background}, we have described the LPWAN technology particularly, Sigfox and NB-IoT in depth and at the same time given the overview of current state of LPWAN technologies in Estonia.\par
+This thesis provided empirical study investigated under current deployment of Sigfox and NB-IoT network operated by two LTE operators and single Sigfox operator in Estonia. Experiments have been conducted in two Estonian university campuses in the two main cities of Estonia (Tartu and Tallinn). In Chapter \ref{technology background}, we have described the LPWAN technology particularly, Sigfox and NB-IoT in depth and at the same time given the overview of current state of LPWAN technologies in Estonia.\par
 
 Chapter \ref{related work}, discusses the related works and surveys that have been carried out in regard to Sigfox or NB-IoT, or together Sigfox and NB-IoT in Estonia and abroad.This helped us to define the foundation of this thesis.\par
 
@@ -1573,7 +1579,7 @@ We then, in Chapter \ref{Results and Methodology} explained our experimental set
 
 As far as results are concerned, it was observed that both technologies; sigfox and NB-IoT had a good to excellent coverage with 0\% packet losses in both campuses which was expected. Some of IoT use-cases for e.g., GPS tracking, city bikes tracking, smart city application; monitoring environmental parameters can benefit largely from the current deployment.\par
 
-In case of indoor coverage, the most phenomenon case was observed at Delta buidling of University of Tartu, where there were no packet losses even though with very weaker coverage strength. This indicates NB-IoT is reliable over other competitive LPWAN technologies. However, this feature comes at the price of energy consumption due to repetitions of packets. Another, important observation was noted, some spots at University of Tartu had NB-IoT outages in-spite of good LTE coverage strength which indicates NB-IoT device registration depends on PRB of base station; also on deployment scheme i.e., in band, guard band or standalone by the LTE vendor. Furthermore, to the above observations, it was also noted that coverage quality of NB-IoT is significantly affected by interference of the neighbouring LTE users; and also by neighbouring NB-IoT devices which we showed in this sub-section \ref{interferenceExp}. However, the same observations were not observed in Sigfox due to the UNB technology.\par
+In case of indoor coverage, the most phenomenon case was observed at Delta building of University of Tartu, where there were no packet losses even though with very weaker coverage strength. This indicates NB-IoT is reliable over other competitive LPWAN technologies. However, this feature comes at the price of energy consumption due to repetitions of packets. Another, important observation was noted, some spots at University of Tartu had NB-IoT outages in-spite of good LTE coverage strength which indicates NB-IoT device registration depends on PRB of base station; also on deployment scheme i.e., in band, guard band or standalone by the LTE vendor. Furthermore, to the above observations, it was also noted that coverage quality of NB-IoT is significantly affected by interference of the neighbouring LTE users; and also by neighbouring NB-IoT devices which we showed in this sub-section \ref{interferenceExp}. However, the same observations were not observed in Sigfox due to the UNB technology.\par
 
 As for deep-indoor coverage, the results were not impressive in UT campus; at UT the both operators had outages or packet losses as high as 61\%. The packet losses were more in Paabel compare to Delta building which indicates thick walls contribute to higher radio penetration losses as compare to newer dwelling structures.Similar observation were not recorded at TalTech campus which further indicates that there is dense narrow band coverage in Tallinn compare to Tartu at the time of writing this thesis. Unfortunately, variation in coverage in deeper coverage are the main cause of concern. It is proposed that LTE vendors and device manufacturer pursue together to build optimum solutions, considering that much of the use-cases for e.g., electricity, water and gas meters resides in deep-indoor environments and they will be largely benefited. 
 
@@ -1591,7 +1597,7 @@ As a part of future works, there are many research topics that can be carried fu
 \end{itemize}
 
 
-\emph{The work carried out in this thesis is submitted as a research paper in 16\textsuperscript{th} International  Wireless Communications \& Mobile computing Conference (IWCMC 2020).}
+\emph{The work carried out in this thesis is submitted as a research paper titled "Coverage Analysis of NB-IoT and Sigfox: Two Estonian University Campuses as a Case Study" in 16\textsuperscript{th} International  Wireless Communications \& Mobile Computing Conference (IWCMC 2020), submitted in February 2020, under review}
 
 
 \newpage
