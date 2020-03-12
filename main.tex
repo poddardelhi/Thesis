@@ -768,7 +768,7 @@ The three operational modes are briefly explained below:
     Standalone deployment is also supported, where the narrowband can be located alone in dedicated spectrum, which makes it possible, for example, to reframe a GSM carrier at 850/900 MHz for NB-IoT \cite{farrell2018low}.
 \end{enumerate}
 
-\paragraph{Resource grid of NB-IoT}
+\paragraph{Resource grid of NB-IoT} \label{repetition}
 NB-IoT only uses 180 kHz bandwidth for both uplink and downlink, and supports two modes in uplink i.e., 3.75 kHz, and 15 kHz; for downlink it has only 15 kHz spacing. In order to serve many devices it supports two schemes 1) optional multi-tone transmission and 2) mandatory single-tone transmission \cite{xu2017narrowband,malik2018radio}. Uplink, can be either single-tone or multi-tone. The 3.75kHz spacing is single-tone, and 15 kHz frequency can be utilized for both single and multi-tone. The detailed frame structure of both downlink and uplink with control channels from TR45.820 \cite{malik2018radio,TR45.820}, are as follows:
 
 \subparagraph{Downlink Transmission:}
@@ -881,7 +881,7 @@ The question of security for NB-IoT is very critical, since data from sensor dev
 NB-IoT derive two security levels from conventional LTE,
 namely: 1) Access Strum (AS) and 2) Non Access Stratum (NAS) security. AS establishes security between the UE and the eNB, whereas NAS security is established and managed by the devices and the mobility management entity (MME). AS and NAS provide security that are offered through ciphering and integrity algorithms listed in \cite{3GPPsecurity}. Specifically, 3GPP defines four ciphering algorithms, referred as EPS encryption algorithm (EEAs), and four integrity algorithms, referred as EPS integrity algorithm (EIA). The security configuration is performed after a negotiation between the UE and the eNB or MME, respectively, eNB and the MME have high priority for the ciphering and integrity algorithms, which are finally selected based on the security capabilities of the UE, whereas, NAS security is always configured before AS security, and both encryption and integrity algorithms are applied in NAS, the ciphering in AS is used for RRC and user plane (UP) while the integrity algorithm is applied only to RRC \cite{martinez2019exploring}.
 
-\subsection{Overview of Radio Frequency Parameters}
+\subsection{Overview of Radio Frequency Parameters}\label{overview of RF}
 
 For the reference in this thesis, we have used various radio frequency parameters to base our analysis, in this subsection we try to explain briefly these metrics, and also provide the acceptable range accepted by 3GPP standars. Furthermore, RSSI, RSRP and RSRQ are categorized into four distinct classes of link quality: POOR, FAIR, GOOD and EXCELLENT. The exact corresponding values differ for NB-IoT and Sigfox in the analysis; the respective values have been detailed in Tables \ref{nbiotRSSI}-\ref{sigfoxRSSI} for RSSI;  Table \ref{nbiotRSRP} for RSRP; and Table \ref{nbiotRSRQ} for RSRQ and Table \ref{nbiotSINR} for SINR respectively below.
 
@@ -934,7 +934,7 @@ RSSI ≤ -135dBm               & POOR          \\ \hline
 
 %----table 5 ends here----
 
-\subsubsection{Reference Signal Received Power}
+\subsubsection{Reference Signal Received Power}\label{rsrp}
 Reference Signal Received Power (RSRP) is similar to RSSI and refers to the average received power over the resource elements that carry cell-specific reference signals within  certain  frequency  bandwidth. RSRP is applicable to RRC\_idle and RRC\_connected states, refer section \ref{RRC}. It is measured in dBm and is calculated using the equation \ref{RSRP equation}.
 
 \begin{equation}
@@ -971,7 +971,7 @@ Where,
 
 It should be noted in the below results that at higher values of RSRP, the BG96 has not calculated the RSSI, it should not be interpreted as packet loss; the same characteristics have been observed in other radio modules e.g., SARA-N210 \cite{basu2019experimental}, therefore the graphs below have breaks in RSSI values. Therefore, RSRP is a more suitable parameter to be considered. Nevertheless, we have tried to analyse the corresponding RSSI measurement as well whenever possible.
 
-\subsubsection{Reference Signal Received Quality}
+\subsubsection{Reference Signal Received Quality}\label{rsrq}
 Reference Signal Received Quality (RSRQ) indicates the quality of received reference signal and is applicable only in RRC\_connected state (refer section \ref{RRC}). It is calculated in dB as per equation \ref{RSRQ equation}. 
 \begin{equation}
      RSRQ= {{N\times} RSRP/ RSSI}
@@ -1000,7 +1000,8 @@ Reference Signal Received Quality (RSRQ) indicates the quality of received refer
 \end{table}
 %---table 7 ends here ----
 
-\subsubsection{Signal to Interference Noise Ratio} Signal to Interference Noise Ratio, is the ratio of signal power and the noise power. It is measured in dB, and calculated using the equation \ref{SINR equation}. \par
+\subsubsection{Signal to Interference Noise Ratio}\label{snr}
+Signal to Interference Noise Ratio, is the ratio of signal power and the noise power. It is measured in dB, and calculated using the equation \ref{SINR equation}. \par
 
 \begin{equation}
        SINR={\dfrac{P}{(I+N)}}
@@ -1252,14 +1253,13 @@ To answer RQ2, we had inserted NB-IoT nodes with narrow band SIM cards from the 
 %---fig 27 nbiot flow chart ends here---
 
 \subsection{Results}\label{results}
-
-This section evaluates the RF results of Sigfox and NB-IoT in three different scenarios i) Outdoor ii) Indoor, and iii) Deep-Indoor/Basement in two University campuses, University of Tartu and TalTech as aforementioned. The radio coverage depends on link budget and other radio parameters for e.g., transmission power, connector loss, antenna gain, the height of antenna that directly affects the overall coverage. Factors like free space path loss, fading reflection, refraction, building structure, and Fresnel zone also affects the coverage \cite{sikora2019test,sikora2019performance}. Therefore, results are outlined on the basis of 3-factor analysis by considering i) RSSI ii) RSRP and iii) RSRQ of the received signal as explained briefly below.
+This section evaluates the RF results of Sigfox and NB-IoT in three different scenarios i) Outdoor ii) Indoor, and iii) Deep-Indoor/Basement in two University campuses, University of Tartu and TalTech as aforementioned. The radio coverage depends on link budget and other radio parameters for e.g., transmission power, connector loss, antenna gain, the height of antenna that directly affects the overall coverage. Factors like free space path loss, fading reflection, refraction, building structure, and Fresnel zone also affects the coverage \cite{sikora2019test,sikora2019performance}. Therefore, results are outlined on the basis of 3-factor analysis by considering i) RSSI ii) RSRP and iii) RSRQ of the received signal as explained in the section \ref{overview of RF}.\par
 
 Furthermore, the results have been categorised below into three subsections based on the above three deployment scenarios.
 
 \subsubsection{Coverage Analysis in Outdoor Scenario}\label{Outdoor Analysis}
 
-The test-beds were deployed in outside locations of both campuses. Specifically, in case of UT, devices were deployed on the roof top of Delta building; in TalTech campus, devices were deployed in outside campus ground as can be seen in the Figure \ref{fig:Outdoor deployment}.\par
+The test devices were deployed in outside locations of both campuses. Specifically, in case of UT, devices were deployed on the roof top of Delta building; in TalTech campus, devices were deployed in outside campus ground as can be seen in the Figure \ref{fig:Outdoor deployment}.\par
 
 
 
@@ -1284,7 +1284,7 @@ The test-beds were deployed in outside locations of both campuses. Specifically,
 \end{figure}
 %---figure 28 ends here----
 
-Furthermore, Figure \ref{RFOutdoor UT} presents the RF coverage results  in $University\ of\  Tartu$ in Locations A and B (refer to Fig. \ref{fig:Observation locations} to see locations on map). During the analysis, it was observed that $operator\ B$ has slightly better outdoor coverage than $operator\ A $ with average RSRP -91.2 dBm compared to -97.4 dBm, as shown in Figure \ref{boxplot}. For RSSI, $operator\ B$ has shown good performance with average RSSI of -77 dBm at location A and -69 dBm RSSI recorded at location B, compared to -90 dBm and -87 dBm, respectively, in case of $operator\ A$. On the other hand, for Sigfox the average RSSI values recorded at Locations A and B were -114 dBm and -103 dBm respectively, which reflects excellent coverage as per \cite{sigfoxRSSI}. For RSRQ, which is defined as quality of received signal \cite{3GPP}, $Operator\ A$ has showed lower RSRQ index at location B compared to $operator\ B$ which shows the weak coverage of $operator\ A$ at this location.\par
+Furthermore, Figure \ref{RFOutdoor UT} presents the RF coverage results of $University\ of\  Tartu$ at Delta and Paabel building (refer to Fig. \ref{fig:Observation locations} to see locations on map). During the analysis as per the Table \ref{nbiotRSRP}, it was observed in case of NB-IoT, that $operator\ B$ has slightly better outdoor coverage than $operator\ A $ with average RSRP -91.2 dBm compared to -97.4 dBm, as shown in Figure \ref{boxplot}. For RSSI, $operator\ B$ has shown good performance with average RSSI of -77 dBm at Delta building and -69 dBm RSSI recorded at Paabel building, compared to -90 dBm and -87 dBm, respectively, in case of $operator\ A$, refer Table \ref{nbiotRSSI}. On the other hand, for Sigfox the average RSSI values recorded at both locations were -114 dBm and -103 dBm respectively, which reflects excellent coverage as per Table \ref{sigfoxRSSI}. For RSRQ, which is defined as quality of received signal, explained in section \ref{rsrq}, $Operator\ A$ has showed lower RSRQ index at Paabel building compared to $operator\ B$ which reflects the weaker coverage of $operator\ A$ at this location.\par
 
 
 
@@ -1343,7 +1343,7 @@ Furthermore, Figure \ref{RFOutdoor UT} presents the RF coverage results  in $Uni
 %---figure 30 tallinn outdoor ends here ---
 
 %-- figure 31 RSRP Boxplot figure
- \begin{figure}[h!]
+ \begin{figure}[H]
 \begin{subfigure}[t]{\linewidth}
   \centering
   % include first image
@@ -1374,7 +1374,7 @@ It is important to highlight NB-IoT and Sigfox both had 0\% packet loss for the 
 
 
 \subsubsection{Coverage Analysis in Indoor Scenario}\label{indoor analysis}
-To observe the indoor coverage, test-beds were deployed in 3\textsuperscript{rd} floor of UT's , Delta and Paabel building and similar setup was deployed at 1\textsuperscript{st} and 2\textsuperscript{nd} floor of TalTech's Thomas Johann Seebeck Department of Electronics (see Figure \ref{fig:Indoor deployment}).
+To observe the indoor coverage, test devices were deployed in 3\textsuperscript{rd} floor of UT's , Delta and Paabel building and similar setup was deployed at 1\textsuperscript{st} and 2\textsuperscript{nd} floor of TalTech's Thomas Johann Seebeck Department of Electronics (see Figure \ref{fig:Indoor deployment}).
 
 
 %---Figure 32 Indoor deployment-----
@@ -1397,7 +1397,7 @@ To observe the indoor coverage, test-beds were deployed in 3\textsuperscript{rd}
 \end{figure}
 %---Figure 32 ends here-----
 
-Figure \ref{RFIndoor Tartu} illustrates the RSSI, RSRP and RSRQ values in indoor scenarios in both campuses. In our measurement, at $University\ of\ Tartu$ Location A, for NB-IoT $operator\ A$, our nodes did not measured any RSSI strength, which is result of RSRP above the threshold value.The average RSRP and RSRQ index measured were -128 dBm and -14 dB, which reflects poor coverage as per Table \ref{nbiotRSRP}. However, interestingly, even with weaker coverage strength there were no packet loss which shows NB-IoT reliability and robustness which is due to the fact that a packet can be re-transmitted (up to 128 repetitions in uplink), which increases the success probability at the price of energy consumption.
+Figure \ref{RFIndoor Tartu} illustrates the RSSI, RSRP and RSRQ values in indoor scenarios in both campuses. In our measurement, at $University\ of\ Tartu$, Delta building, for NB-IoT $operator\ A$, our nodes did not measured any RSSI strength, which is result of RSRP above the threshold value, explained in section \ref{rsrp}. The average RSRP and RSRQ index measured were -128 dBm and -14 dB, which reflects poor coverage as per Table \ref{nbiotRSRP}. However, interestingly, even with weaker coverage strength there were no packet loss which shows NB-IoT reliability and robustness which is due to the fact that a packet can be re-transmitted (up to 128 repetitions in uplink, refer to section \ref{repetition}), which increases the success probability at the price of energy consumption.
 
 %----figure 33 starts here----
  \begin{figure}[h!]
@@ -1425,7 +1425,7 @@ Figure \ref{RFIndoor Tartu} illustrates the RSSI, RSRP and RSRQ values in indoor
 \end{figure}
 %----figure 33 ends here----
 
-It was also observed in Location A that with the increase in human occupancy in the building, which is directly proportional to active mobile users, there were fluctuations in the RSSI in both NB-IoT operators, This is due to the many reasons such as sampling rate, inter-PRB interference due to power leakage between NB-IoT and LTE PRBs \cite{mwakwata2019narrowband}. However, the same was not observed with Sigfox, which shows that Sigfox is unaffected by neighboring LTE interference and noises which is due to its ultra narrow band modulation.
+It was also observed in Delta buidling that with the increase in human occupancy in the building, which is directly proportional to active mobile users, there were fluctuations in the RSSI in both NB-IoT operators, This is due to the many reasons such as sampling rate, inter-PRB interference due to power leakage between NB-IoT and LTE PRBs \cite{mwakwata2019narrowband}. However, the same was not observed with Sigfox, which shows that Sigfox is unaffected by neighboring LTE interference and noises which is due to its ultra narrow band modulation.
 
 
 %--- figure 34 starts here---
@@ -1481,7 +1481,7 @@ To observe the coverage in Deep-Indoor scenario we had deployed the test-beds in
 \end{figure}
 %----figure 35 ends here----
 
-Furthermore, Figure \ref{RFDeepIndoorTartu} and Figure \ref{RFDeepIndoorTallinn} presents the RF coverage of NB-IoT and Sigfox in deep-indoor. It is interesting to note that NB-IoT $operator\ A$ had NB outage in $University\ of\ Tartu$ location A. Therefore, it has been assigned value 0 for all corresponding RF parameters. However, on the other hand $operator\ B$ had maximum packet loss of 61\%, followed by Sigfox for same location that had 9\% packet loss. The average RSRP observed, see Figure \ref{boxplot}, at this site was -133 dBm for $operator\ B$ which quantifies to\ poor coverage. In addition to the above, at location B of $University\ of\ Tartu$ there were 33\% of packet loss in case of NB-IoT $Operator\ B$, followed by 0\% packet loss in case of $operator\  A$, which confirms that $operator\ B$ has weaker deep indoor coverage penetration at this location.This observation also confirms, NB-IoT performances are affected by building structure and material used.\par
+Furthermore, Figure \ref{RFDeepIndoorTartu} and Figure \ref{RFDeepIndoorTallinn} presents the RF coverage of NB-IoT and Sigfox in deep-indoor. It is interesting to note that NB-IoT $operator\ A$ had NB outage in $University\ of\ Tartu$ at Delta buidling. Therefore, it has been assigned value 0 for all corresponding RF parameters. However, on the other hand $operator\ B$ had maximum packet loss of 61\%, followed by Sigfox for same location that had 9\% packet loss. The average RSRP observed, see Figure \ref{boxplot}, at this site was -133 dBm for $operator\ B$ which quantifies to\ poor coverage. In addition to the above, at Paabel building of $University\ of\ Tartu$ there were 33\% of packet loss in case of NB-IoT $Operator\ B$, followed by 0\% packet loss in case of $operator\  A$, which confirms that $operator\ B$ has weaker deep indoor coverage penetration at this location.This observation also confirms, NB-IoT performances are affected by building structure and material used.\par
 Furthermore, the same outage and high packet loss was not observed in TalTech campus for NB-IoT which shows both operators $operator\ A$ and $operator\ B$ have dense narrow band network in that area at the time of writing this paper.
 
 
@@ -1573,9 +1573,9 @@ We then, in Chapter \ref{Results and Methodology} explained our experimental set
 
 As far as results are concerned, it was observed that both technologies; sigfox and NB-IoT had a good to excellent coverage with 0\% packet losses in both campuses which was expected. Some of IoT use-cases for e.g., GPS tracking, city bikes tracking, smart city application; monitoring environmental parameters can benefit largely from the current deployment.\par
 
-In case of indoor coverage, the most phenomenon case was observed at location A of University of Tartu, where there were no packet losses even though with very weaker coverage strength. This indicates NB-IoT is reliable over other competitive LPWAN technologies. However, this feature comes at the price of energy consumption due to repetitions of packets. Another, important observation was noted, some spots at University of Tartu had NB-IoT outages in-spite of good LTE coverage strength which indicates NB-IoT device registration depends on PRB of base station; also on deployment scheme i.e., in band, guard band or standalone by the LTE vendor. Furthermore, to the above observations, it was also noted that coverage quality of NB-IoT is significantly affected by interference of the neighbouring LTE users; and also by neighbouring NB-IoT devices which we showed in this sub-section \ref{interferenceExp}. However, the same observations were not observed in Sigfox due to the UNB technology.\par
+In case of indoor coverage, the most phenomenon case was observed at Delta buidling of University of Tartu, where there were no packet losses even though with very weaker coverage strength. This indicates NB-IoT is reliable over other competitive LPWAN technologies. However, this feature comes at the price of energy consumption due to repetitions of packets. Another, important observation was noted, some spots at University of Tartu had NB-IoT outages in-spite of good LTE coverage strength which indicates NB-IoT device registration depends on PRB of base station; also on deployment scheme i.e., in band, guard band or standalone by the LTE vendor. Furthermore, to the above observations, it was also noted that coverage quality of NB-IoT is significantly affected by interference of the neighbouring LTE users; and also by neighbouring NB-IoT devices which we showed in this sub-section \ref{interferenceExp}. However, the same observations were not observed in Sigfox due to the UNB technology.\par
 
-As for deep-indoor coverage, the results were not impressive in UT campus; at UT the both operators had outages or packet losses as high as 61\%. The packet losses were more in Paabel compare to Delta  building which indicates thick walls contribute to higher radio penetration losses as compare to newer dwelling structures.Similar observation were not recorded at TalTech campus which further indicates that there is dense narrow band coverage in Tallinn compare to Tartu at the time of writing this thesis. Unfortunately, variation in coverage in deeper coverage are the main cause of concern. It is proposed that LTE vendors and device manufacturer pursue together to build optimum solutions, considering that much of the use-cases for e.g., electricity, water and gas meters resides in deep-indoor environments and they will be largely benefited. 
+As for deep-indoor coverage, the results were not impressive in UT campus; at UT the both operators had outages or packet losses as high as 61\%. The packet losses were more in Paabel compare to Delta building which indicates thick walls contribute to higher radio penetration losses as compare to newer dwelling structures.Similar observation were not recorded at TalTech campus which further indicates that there is dense narrow band coverage in Tallinn compare to Tartu at the time of writing this thesis. Unfortunately, variation in coverage in deeper coverage are the main cause of concern. It is proposed that LTE vendors and device manufacturer pursue together to build optimum solutions, considering that much of the use-cases for e.g., electricity, water and gas meters resides in deep-indoor environments and they will be largely benefited. 
 
 
 This thesis produces comprehensive overview of NB-IoT and Sigfox coverage recorded in different scenarios and the results  can  be  further  used as a reference point by operators, telecom engineers, students and researchers who are currently working on or interested in LPWAN technology.\par 
