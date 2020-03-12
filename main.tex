@@ -312,7 +312,7 @@ LPWAN, NB-IoT, Sigfox, coverage, network-testing
 %=== Info in Estonian
 \newcommand\EstInfo{{%
 \selectlanguage{estonian}
-\noindent\textbf{\large Sigfoxi ja NB-IoT katteanalüüs Eestis: juhtumianalüüs Taltechi ülikoolilinnakus ja Tartu ülikoolis, Delta ja Paabeli hoones}
+\noindent\textbf{\large Sigfoxi ja NB-IoT võrgud (võrgu analüüs) Eestis: Uuring Taltechi ülikoolilinnakus ja Tartu ülikoolis, Delta ja Paabeli hoonetes}
 \vspace*{1ex}
 
 \noindent\textbf{Lühikokkuvõte:} 
@@ -353,19 +353,18 @@ LPWAN, NB-IoT, Sigfox, coverage, network-testing
 %List of figures and tables
 \listoffigures
 \listoftables
-
-
-% Remember to remove this from the final thesis version
 \newpage
 
-\listoftodos[Unsolved issues]
+% Remember to remove this from the final thesis version
+
+%\listoftodos[Unsolved issues]
 % END OF TODO PAGE 
 
 
 \newpage
 \section{Introduction}
 
-The term Internet of Things (IoT) refers to collection of physical devices embedded with various sensors, that are connected to the Internet through IP protocols. This feature enables them to gather and exchange the value-added data with the end users. These small devices are  beneficial to wide spectrum of use-cases in transportation, e-health, smart cities, smart logistics, smart metering (electricity,gas and water) and many more \cite{basu2019experimental}, see Figure \ref{fig:IoT generic scenario}, shows various IoT generic scenarios. These devices send their data to Internet through wireless or Machine-to-Machine (M2M) protocols \cite{singh2015secure}. By the year 2025, it is projected 30 billion devices will be connected to network worldwide \cite{nokiaresource}; European Commission has published a study in the year 2016, that claims 6 billion IoT devices will be connected in European Union (EU) IoT market \cite{EUIoT}, and the IoT market will generate \$1 trillion euros by end of year 2020 \cite{liu2019privacy}. \par. 
+The term Internet of Things (IoT) refers to collection of physical devices embedded with various sensors, that are connected to the Internet through IP protocols. This feature enables them to gather and exchange the value-added data with the end users. These small devices are  beneficial to wide spectrum of use-cases in transportation, e-health, smart cities, smart logistics, smart metering (electricity,gas and water) and many more \cite{basu2019experimental}, see Figure \ref{fig:IoT generic scenario}, shows how IoT devices communicate and send data to the central cloud center in IoT ecosystem. These devices send their data to Internet through wireless or Machine-to-Machine (M2M) protocols \cite{singh2015secure}. By the year 2025, it is projected 30 billion devices will be connected to network worldwide \cite{nokiaresource}; European Commission has published a study in the year 2016, that claims 6 billion IoT devices will be connected in European Union (EU) IoT market \cite{EUIoT}, and the IoT market will generate \$1 trillion euros by end of year 2020 \cite{liu2019privacy}. \par
 %figure1: 
 \begin{figure}[H]
   \includegraphics[width=\columnwidth,height=10cm,keepaspectratio]{Images/iot_generic_scenario.pdf}
@@ -374,7 +373,7 @@ The term Internet of Things (IoT) refers to collection of physical devices embed
   \label{fig:IoT generic scenario}
 \end{figure}
 
-In recent years, focus has been shifted to wireless IoT communication where Low Power Wireless Network (LPWAN) is viewed as one of the empowering influencer. According to research published by NOKIA \cite{nokiaresource}, a quarter of connected devices from the total will be connected to the Internet using the LPWAN, see Figure \ref{fig:Projected Growth of LPWAN}. Unlike to other short-range wireless IoT communication technologies like Zig-Bee \cite{zigbeeAliance}, Z-wave \cite{zwave}, Bluetooth \cite{bluetooth}, wireless local area networks W-LANs etc. LPWAN technologies have advantages since they support long coverage range, low cost of operations, long battery life (>10 Yrs) e.t.c., since LPWAN requires a low infrastructure cost for deployment and maintenance, it has fueled its momentum in recent years \cite{gomez2019sigfox}. Among the available LPWAN technologies, Sigfox, LoRaWAN, and  NB-IoT are the most prevalent and emerging technologies, with technical differences though, that are selected as per the individual application requirements.\par
+In recent years, focus has been shifted to wireless IoT communication where Low Power Wireless Network (LPWAN) is viewed as one of the empowering influencer. According to research published by NOKIA \cite{nokiaresource}, a quarter of connected devices from the total will be connected to the Internet using the LPWAN, see Figure \ref{fig:Projected Growth of LPWAN}. Unlike to other short-range wireless IoT communication technologies like Zig-Bee \cite{zigbeeAliance}, Z-wave \cite{zwave}, Bluetooth \cite{bluetooth}, wireless local area networks W-LANs etc. LPWAN technologies have advantages since they support long coverage range, low cost of operations, long battery life (>10 Yrs) e.t.c., since LPWAN requires a low infrastructure cost for deployment and maintenance, it has fueled its momentum in recent years \cite{gomez2019sigfox}. Among the available LPWAN technologies, Sigfox, LoRaWAN, and  NB-IoT are the most prevalent and emerging technologies, with technical differences like data size, number of transmission allowed e.t.c., are preferred as per the individual application requirements.\par
 
 %figure2: 
 \begin{figure}[h!]
@@ -388,22 +387,22 @@ In recent years, focus has been shifted to wireless IoT communication where Low 
 \subsection{Motivation}\label{motivation}
 
 The promising prospects of LPWAN has encouraged the industries to adopt this technology in industrial IoT applications. \par
-NB-IoT offers high QOS, reliability, scalability, payload length but at the same time compromises with Sigfox in terms of coverage range, cost efficiency, network deployment and battery life \cite{mekki2019comparative}. Both these technologies holds a competitive market in Estonia but unfortunately, currently does not have uptake yet due to very minimum technological awareness among the application users. Application users demand strong network coverage before they are interested in developing business use cases, and LPWAN operators require consumers and enterprises demands or business cases before deploying and strengthening the current network. This leads to a paradoxical situation where both parties don't come to agreement. These situations can be jointly mitigated by strong understanding of the technology. These understandings don't come by the fact from great theoretical and simulations analysis, absence of empirical evidence largely contribute to general uncertainty of understanding the technology and results in slower adoption rate towards the technology. In this thesis, we try our best to give in-depth technical overview of LPWAN technology primarily; Sigfox and NB-IoT, and with support of our empirical results, we rule out their advantages, disadvantages and challenges in different deployment scenarios. This thesis mainly addresses on three below research questions as addressed below:
+NB-IoT offers high Quality of Service(QOS), reliability, scalability, payload length but at the same time compromises with Sigfox in terms of coverage range, cost efficiency, network deployment and battery life \cite{mekki2019comparative}. Both these technologies holds a competitive market in Estonia but unfortunately, currently does not have uptake yet due to very minimum technological awareness among the application users. Application users demand strong network coverage before they are interested in developing business use cases, and LPWAN operators require consumers and enterprises demands or business cases before deploying and strengthening the current network. This leads to a paradoxical situation where both parties don't come to agreement. These situations can be jointly mitigated by strong understanding of the technology. These understandings don't come by the fact from great theoretical and simulations analysis, absence of empirical evidence largely contribute to general uncertainty of understanding the technology and results in slower adoption rate towards the technology. In this thesis, we give in-depth technical overview of LPWAN technology primarily; Sigfox and NB-IoT, and addition to the technical overview, the thesis involves empirical results, since most of the existing literature are replete with one parameter analysis i.e., Received Signal Strength Indicator \cite{malik2019nb,khan2019dorm} and most of time one parameter analysis is not sufficient for evaluating LTE-based technology, we further explain this in section \ref{related work}. Through this experiment we also rule out advantages, disadvantages and challenges in different deployment scenarios of NB-IoT and Sigfox. This thesis mainly addresses on three below research questions as addressed below:
 %\renewcommand{\labelenumi}{\roman{enumi}}
 \begin{itemize}
-   \item \textbf{RQ1:} How do different LPWAN technologies (licences and un-licensed) perform considering the radio parameters such as RSSI, RSRP, RSRQ, SINR, and packet loss in different deployment scenarios?
+   \item \textbf{RQ1:} How do different LPWAN technologies (license and un-licensed) perform considering the radio parameters such as RSSI, RSRP, RSRQ, SINR, and packet loss in different deployment scenarios?
 \item \textbf{RQ2:} How are these performances affected by different mobile network operators (MNO) in different locations and settings?
 
-\item \textbf{RQ3:} What is the impact of interference? 
+\item \textbf{RQ3:} What is the impact of interference caused by multiple similar devices? 
    \end{itemize}
 %\end{enumerate}
 
 \subsection{Thesis Structure}
-The remainder of this thesis is divided into 4 chapters. Chapter \ref{State of the Art} presents the technology overview and related works of LPWAN technologies - Sigfox and NB-IoT. Chapter \ref{Results and Methodology} describes the experimental setup followed with the results and finally, Chapter \ref{conclusion} concludes this thesis with future works.
+The remainder of this thesis is divided into 4 chapters. Chapter \ref{State of the Art} presents the technology overview and the related works of LPWAN technologies - Sigfox and NB-IoT. Chapter \ref{Results and Methodology} describes the experimental setup followed with the results and finally, Chapter \ref{conclusion} concludes this thesis with future works.
 
 \newpage
 \section{State of the Art}\label{State of the Art}
-This chapter provides the technological background of the LPWAN technologies in the context of this thesis. First, we present the background of LPWAN followed with comparison of all the LPWAN technologies e.g., Sigfox, LoRa, LTE-M, and NB-IoT  in the form of table. Second, we give the overview of LPWAN presence in Estonia. Third, we explain the basics of modulation in reference to modulation technique used in the Sigfox and NB-IoT. Fourth and Fifth, we give in-depth overview of technical aspect of Sigfox and NB-IoT explaining the network topology, frame structure e.t.c., and Last, we present out the previous research contributions.
+This chapter provides the technological background of the LPWAN technologies in the context of this thesis. First, we present the background of LPWAN followed with comparison of all the LPWAN technologies e.g., Sigfox, LoRa, LTE-M, and NB-IoT  in the form of table. Second, we give the overview of LPWAN presence in Estonia. Third, we explain the basics of modulation in reference to modulation technique used in the Sigfox and NB-IoT. Then, we give in-depth overview of technical aspect of Sigfox and NB-IoT explaining the network topology, frame structure e.t.c., and Last, we present out the previous research contributions.
 
 \subsection{Low Power Wide Area Network (LPWAN)}
 
@@ -418,7 +417,7 @@ The paradigm LPWAN has emerged in recent years, therefore not every IoT applicat
   \label{fig:LPWAN Vs Other Wireless Technologies}
 \end{figure}
 
-The technology is broadly classified into two categories: Licensed (e.g., NB-IoT, LTE-M-IoT) and Non licensed (e.g.,Sigfox,Telensa,LoRa, RPMA, NB-Fi, Weightless) based on frequency spectrum \cite{8612009} and further Non-Licensed are sub categorised as Ultra Narrow Band (UNB) (e.g., Sigfox) and Spread Spectrum (SS) (e.g.,LoRa) based on physical layer communication \cite{8544414}. Table \ref{table:LPWAN comparison} is extracted from \cite{LPWANspecs}, illustrates the comparison of specification among various LPWAN technologies. \par
+The technology is broadly classified into two categories: Licensed (e.g., NB-IoT, LTE-M-IoT) and Non licensed (e.g.,Sigfox,Telensa,LoRa, RPMA, NB-Fi, Weightless) based on frequency spectrum \cite{8612009} and further Non-Licensed are sub categorised as Ultra Narrow Band (UNB) (e.g., Sigfox) and Spread Spectrum (SS) (e.g.,LoRa) based on physical layer communication \cite{8544414}. Table \ref{table:LPWAN comparison} is extracted from \cite{LPWANspecs}, illustrates the comparison of specification among various LPWAN technologies. It can be interpreted from the table, that Sigfox and NB-IoT extends +160 dB maximum coupling loss (MCL) this indicates both these technologies support coverage in deep-indoor scenarios, this will be one of the scope of observation in this thesis. \par
 
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
@@ -760,11 +759,11 @@ Like LTE, NB-IoT is based on orthogonal frequency-division multiple access (OFDM
 The three operational modes are briefly explained below:
 \renewcommand{\labelenumi}{\roman{enumi}}
 \begin{enumerate}
-    \item In-Band Operation Mode\newline
+    \item \textbf{In-Band Operation Mode}\newline
     In-band deployment means that the narrowband is deployed inside the LTE band and radio resources are flexibly shared between NB-IoT and normal LTE carrier \cite{farrell2018low}.
-    \item  Guard Band Operation Mode\newline
+    \item  \textbf{Guard Band Operation Mode}\newline
     In Guard band deployment, the narrowband uses the unused resource blocks between two adjacent LTE carriers \cite{farrell2018low}.
-    \item Stand Alone Operation Mode\newline
+    \item \textbf{Stand Alone Operation Mode}\newline
     Standalone deployment is also supported, where the narrowband can be located alone in dedicated spectrum, which makes it possible, for example, to reframe a GSM carrier at 850/900 MHz for NB-IoT \cite{farrell2018low}.
 \end{enumerate}
 
@@ -777,7 +776,7 @@ The frame structure of NB-IoT downlink is similar to conventional LTE, in the sh
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\columnwidth]{Images/nbiotDownlinkFrame.pdf}
+    \includegraphics[width=0.9\columnwidth,keepaspectratio]{Images/nbiotDownlinkFrame.pdf}
     \caption{NB-IoT downlink frame structure \cite{malik2018radio}}
     \label{fig:NB-IoT downlink frame structure}
 \end{figure}
@@ -883,7 +882,7 @@ namely: 1) Access Strum (AS) and 2) Non Access Stratum (NAS) security. AS establ
 
 \subsection{Overview of Radio Frequency Parameters}\label{overview of RF}
 
-For the reference in this thesis, we have used various radio frequency parameters to base our analysis, in this subsection we try to explain briefly these metrics, and also provide the acceptable range accepted by 3GPP standars. Furthermore, RSSI, RSRP and RSRQ are categorized into four distinct classes of link quality: POOR, FAIR, GOOD and EXCELLENT. The exact corresponding values differ for NB-IoT and Sigfox in the analysis; the respective values have been detailed in Tables \ref{nbiotRSSI}-\ref{sigfoxRSSI} for RSSI;  Table \ref{nbiotRSRP} for RSRP; and Table \ref{nbiotRSRQ} for RSRQ and Table \ref{nbiotSINR} for SINR respectively below.
+For the reference in this thesis, we have used various radio frequency parameters to base our analysis, in this subsection we try to explain briefly these metrics, and also provide the acceptable range accepted by 3GPP standars. Furthermore, RSSI, RSRP and RSRQ are categorized into four distinct classes of link quality: POOR, FAIR, GOOD and EXCELLENT according to 3GPP standards \cite{3GPP,sikora2019performance}. The exact corresponding values differ for NB-IoT and Sigfox in the analysis; the respective values have been detailed in Tables \ref{nbiotRSSI}-\ref{sigfoxRSSI} for RSSI;  Table \ref{nbiotRSRP} for RSRP; and Table \ref{nbiotRSRQ} for RSRQ and Table \ref{nbiotSINR} for SINR respectively below.
 
 
 \subsubsection{Received Signal Strength Indicator}
@@ -1157,7 +1156,7 @@ Reference & Technologies       & Type of Analysis & Region           & Metrics  
 
 \newpage
 \section{Results and Methodology}\label{Results and Methodology}
-In this Chapter, we present the results and methodology of our coverage campaign in two universities campuses. First, we describe our hardware and cloud platform setup of Sigfox and NB-IoT, and in the end, we present the results of the field test experiments. The purpose of this field-tests is to collect the radio frequency parameters to answer our 3 foremost RQs; to support answers for our RQ1 and RQ2, we conducted series of experiments for duration half/full-day; measured radio frequency parameters at 30 minutes interval at different locations and scenarios, the results have been detailed in sub-section \ref{Outdoor Analysis}, \ref{indoor analysis}, and \ref{deep-indoor analysis}; to answer RQ3, we had implemented a lab condition to see the co-existence interference among the devices, the results have bee detailed in sub-section \ref{interferenceExp}.
+In this chapter, we present the results and methodology of our coverage campaign in two universities campuses. First, we describe our hardware and cloud platform setup of Sigfox and NB-IoT, and in the end, we present the results of the field test experiments. The purpose of this field-tests is to collect the radio frequency parameters to answer our 3 foremost RQs; to support answers for our RQ1 and RQ2, we conducted series of experiments for duration half/full-day; measured radio frequency parameters at 30 minutes interval at different locations and scenarios, the results have been detailed in sub-section \ref{Outdoor Analysis}, \ref{indoor analysis}, and \ref{deep-indoor analysis}; to answer RQ3, we had implemented a lab condition to see the co-existence interference among the devices, the results have bee detailed in sub-section \ref{interferenceExp}.
 
 
 
@@ -1174,7 +1173,7 @@ In this Chapter, we present the results and methodology of our coverage campaign
 \end{figure}
 
 
-The measurements are done in two universities campuses i.e., University of Tartu, Delta and Paabel building, and in Tallinn University of Technology, Thomas Johann Seebeck Department of Electronics (location in Google map Figure \ref{fig:Observation locations}). As aforementioned, the purpose of these field-tests are to measure the RF values i.e., RSSI in case of Sigfox and RSSI, RSRP, and RSRQ in case of NB-IoT, in three different scenarios i) Outdoor ii) Indoor,and iii) Deep-Indoor. To carry out the experiment, below following hard-wares, devkits were utilized (see Figure \ref{fig:Experimental Setup}); discussed in below subsections respectively \ref{sigfox experimental setup} and \ref{NB-IoT experimental setup}. The observations were recorded at 30 minutes interval for half-day to full day, and from the recorded data we took data samples of 40 uplink transmissions i.e., from 12AM to 5:30PM for analysis; all the measurement values were stored in a single cloud platform Ubidots\footnote{https://ubidots.com/} which offers easy integration using the TCP/UDP and REST protocols.
+The measurements are done in two universities campuses i.e., University of Tartu, Delta and Paabel building, and in Tallinn University of Technology, Thomas Johann Seebeck Department of Electronics (location in Google map Figure \ref{fig:Observation locations}). As aforementioned, the purpose of these field-tests are to measure the RF values i.e., RSSI in case of Sigfox and RSSI, RSRP, and RSRQ in case of NB-IoT, in three different scenarios i) Outdoor ii) Indoor,and iii) Deep-Indoor. To carry out the experiment, below following hard-wares, devkits were utilized (see Figure \ref{fig:Experimental Setup}); discussed in below subsections respectively \ref{sigfox experimental setup} and \ref{NB-IoT experimental setup}. The observations were recorded at 30 minutes interval for half-day to full day, and from the recorded data we took data samples of 40 uplink transmissions i.e., from 12AM to 5:30PM for analysis; all the measurement values were stored in a single cloud platform Ubidots\footnote{https://ubidots.com/} which offers easy integration using the TCP/UDP and HTTP protocols.
 
 
 \begin{figure}[H]
@@ -1188,7 +1187,7 @@ The measurements are done in two universities campuses i.e., University of Tartu
 
 
 \subsubsection{Sigfox}\label{sigfox experimental setup}
-For our measurement campaign, we have used proprietary Sigfox device Airwits\footnote{https://partners.sigfox.com/products/connected-airwits}, that is class 0, as per the specifications and has a better antenna design compared to Pycom-Sipy\footnote{https://pycom.io/product/sipy/} which we initially tested. Each Airwits device is deployed along with other NB-IoT node, transmits data to the nearest base stations in every 30 minutes interval. This data upon receiving at base stations are forwarded to Sigfox core network i.e., Sigfox backend which further forwards the data as a callback\footnote{https://support.sigfox.com/docs/callbacks-documentation} to Ubidots in JSON format that includes the RSSI, SNR, and the timestamps which corresponds to time of arrival of message at Sigfox core network. Figure \ref{fig:Sigfox-Ubidots data flow} refers to the callback settings and Ubidot dashboard and Figure \ref{fig:Sigfox Airwits flowchart} refers to the flow chart explaining the working of the Airwits.
+For our measurement campaign, we have used proprietary Sigfox device Airwits\footnote{https://partners.sigfox.com/products/connected-airwits}, that is class 0, as per the specifications and has a better antenna design and placement which allows us to the field test without worrying about the position and alignment of antenna compared to Pycom-Sipy\footnote{https://pycom.io/product/sipy/} which we initially tested. Each Airwits device is deployed along with other NB-IoT node, transmits data to the nearest base stations in every 30 minutes interval. This data upon receiving at base stations are forwarded to Sigfox core network i.e., Sigfox backend which further forwards the data as a callback\footnote{https://support.sigfox.com/docs/callbacks-documentation} to Ubidots in JSON format that includes the RSSI, SNR, and the timestamps which corresponds to time of arrival of message at Sigfox core network. Figure \ref{fig:Sigfox-Ubidots data flow} refers to the callback settings and Ubidot dashboard and Figure \ref{fig:Sigfox Airwits flowchart} refers to the flow chart explaining the working of the Airwits.
 
 
 
@@ -1269,13 +1268,13 @@ The test devices were deployed in outside locations of both campuses. Specifical
 \begin{subfigure}[t]{0.42\linewidth}
   \centering
   % include first image
-   \includegraphics[width=6cm,height=6cm,angle=-90]{Images/sitePictures/Tartu/outdoor.jpg} 
+   \includegraphics[width=6cm,height=6cm]{Images/sitePictures/Tartu/outdoor-min.pdf} 
   \caption{UT outdoor scenario}
 \end{subfigure}
 \begin{subfigure}[t]{0.42\linewidth}
   \centering
   % include second image
-  \includegraphics[height=6cm,width=6cm,angle=-90]{Images/sitePictures/Tallinn/outdoor.jpg} 
+  \includegraphics[height=6cm,width=6cm]{Images/sitePictures/Tallinn/outdoor-min.pdf} 
   \caption{TalTech outdoor scenario}
 \end{subfigure}
 
@@ -1357,7 +1356,7 @@ Furthermore, Figure \ref{RFOutdoor UT} presents the RF coverage results of $Univ
   \caption{University of Tartu campus, Tartu}
   
 \end{subfigure}
-\caption{NB-IoT RSRP distribution in Tallinn and Tartu}
+\caption{Whisker representation of NB-IoT RSRP distribution in Tallinn and Tartu (X represents median within the block)}
  \label{boxplot}
 \end{figure}
 %-----figure 31 end here-----
@@ -1375,20 +1374,44 @@ It is important to highlight NB-IoT and Sigfox both had 0\% packet loss for the 
 
 \subsubsection{Coverage Analysis in Indoor Scenario}\label{indoor analysis}
 To observe the indoor coverage, test devices were deployed in 3\textsuperscript{rd} floor of UT's , Delta and Paabel building and similar setup was deployed at 1\textsuperscript{st} and 2\textsuperscript{nd} floor of TalTech's Thomas Johann Seebeck Department of Electronics (see Figure \ref{fig:Indoor deployment}).
+%\begin{comment}
+
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.49 \linewidth}
+  \centering
+  \includegraphics[height=6cm,width=6cm,]{Images/sitePictures/Tartu/indoor-min.pdf}
+  \caption{UT indoor scenario}
+  \end{subfigure}%
+  \begin{subfigure}{0.49 \linewidth}
+    \centering
+    \includegraphics[height=6cm,width=6cm,angle=-90]{Images/sitePictures/Tallinn/indoor}
+    \caption{TalTech indoor scenario}
+  \end{subfigure}
+   
+    \caption{Indoor deployment}
+    \label{fig:Indoor deployment}
+\end{figure}
+
+%\end{comment}
+
+\begin{comment}
 
 
 %---Figure 32 Indoor deployment-----
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
-\begin{subfigure}[t]{0.42 \linewidth}
+\begin{subfigure}{0.49 \linewidth}
   \centering
-  \includegraphics[width=6cm,height=6cm]{Images/sitePictures/Tartu/indoor.jpg}
+  \includegraphics[width=6cm,height=5cm,keepaspectratio]{Images/sitePictures/Tartu/indoor-min.pdf}
   \caption{University of Tartu indoor scenario}
-  \end{subfigure}
+  \end{subfigure}%
   
-  \begin{subfigure}[t]{0.42\linewidth}
+  \begin{subfigure}{0.49\linewidth}
     \centering
-    \includegraphics[height=6cm,width=6cm,angle=-90]{Images/sitePictures/Tallinn/indoor.jpg}
+    \includegraphics[height=6cm,width=5cm,keepaspectratio]{Images/sitePictures/Tallinn/indoor-min.pdf}
     \caption{TalTech indoor scenario}
   \end{subfigure}
    
@@ -1396,7 +1419,7 @@ To observe the indoor coverage, test devices were deployed in 3\textsuperscript{
     \label{fig:Indoor deployment}
 \end{figure}
 %---Figure 32 ends here-----
-
+\end{comment}
 Figure \ref{RFIndoor Tartu} illustrates the RSSI, RSRP and RSRQ values in indoor scenarios in both campuses. In our measurement, at $University\ of\ Tartu$, Delta building, for NB-IoT $operator\ A$, our nodes did not measured any RSSI strength, which is result of RSRP above the threshold value, explained in section \ref{rsrp}. The average RSRP and RSRQ index measured were -128 dBm and -14 dB, which reflects poor coverage as per Table \ref{nbiotRSRP}. However, interestingly, even with weaker coverage strength there were no packet loss which shows NB-IoT reliability and robustness which is due to the fact that a packet can be re-transmitted (up to 128 repetitions in uplink, refer to section \ref{repetition}), which increases the success probability at the price of energy consumption.
 
 %----figure 33 starts here----
@@ -1466,15 +1489,14 @@ To observe the coverage in Deep-Indoor scenario we had deployed the test devices
 %----figure 35 starts here----
 \begin{figure}[H]
 \centering
-\begin{subfigure}[t]{0.42 \columnwidth}
+\begin{subfigure}{0.49 \linewidth}
   \centering
-  \includegraphics[width=6cm,height=5cm,angle=-90,keepaspectratio]{Images/sitePictures/Tartu/deepIndoor.jpg}
+  \includegraphics[width=6cm,height=6cm]{Images/sitePictures/Tartu/deepIndoor-min.pdf}
   \caption{UT deep-indoor scenario}
-  \end{subfigure}
-  
-  \begin{subfigure}[t]{0.42 \columnwidth}
+  \end{subfigure}%
+  \begin{subfigure}{0.49 \linewidth}
     \centering
-    \includegraphics[height=4cm,width=6cm]{Images/sitePictures/Tallinn/depIndoor.jpg}
+    \includegraphics[height=6cm,width=6cm]{Images/sitePictures/Tallinn/depIndoor-min.pdf}
     \caption{TalTech deep-indoor scenario}
   \end{subfigure}
    
@@ -1546,13 +1568,13 @@ Furthermore, the same outage and high packet loss was not observed in TalTech ca
 
 %---figure 37 ends here----
 \newpage \subsubsection{Interference Analysis in Co-existence scenario} \label{interferenceExp}
-Predicting interference, estimation or cancellation of inferences for NB-IoT is challenging. This is due to the sharing of spectrum resources between NB-IoT and conventional LTE, co-existence interference due to neighboring devices, inferences due to small and macro cells; and interference due to environmental and surrounding conditions are some of the main causes of inferences \cite{mwakwata2019narrowband}. To observe this behavior, a small scale level, experiment was conducted where devices were deployed in single room; in two cluster A and B; a distance of approx 5m was maintained from each other as shown in Figure \ref{fig:Example of device deployment in heterogeneous case}.
+Predicting interference, estimation or cancellation of inferences for NB-IoT is challenging. This is due to the sharing of spectrum resources between NB-IoT and conventional LTE, co-existence interference due to neighboring devices, inferences due to small and macro cells; and interference due to environmental and surrounding conditions are some of the main causes of inferences \cite{mwakwata2019narrowband}. To observe this behavior, an experiment was conducted where 9 UEs were deployed in single room; in two cluster A (with 8 UEs) and B (with 1 UE); a distance of approx 5m was maintained from each other as shown in Figure \ref{fig:Example of device deployment in heterogeneous case}.\par
 
 %---figure 38 starts here----
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\linewidth]{Images/hetrogenousCase.pdf}
-    \caption{Example of device deployment in heterogeneous case.}
+    \caption{Co-existence case, cluster A (with 8 UEs) and cluster B (with 1 UE) arrangement}
     \label{fig:Example of device deployment in heterogeneous case}
 \end{figure}
 %---figure 38 ends here----
@@ -1560,17 +1582,17 @@ Predicting interference, estimation or cancellation of inferences for NB-IoT is 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.8\linewidth]{Images/SINRBoxplot.pdf}
-    \caption{NB-IoT SINR distribution in heterogeneous scenario}
+    \caption{Whisker representation of NB-IoT SINR distribution in co-existence scenario (X represents median within the block)}
     \label{fig:SINR distribution}
 \end{figure}
 %---figure 39 ends here----
 
-Figure \ref{fig:SINR distribution} present the signal to interference noise ratio distribution for small heterogeneous environment created in TalTech lab. During the analysis, it was observed, $operator\ A$, the median SINR ratio for cluster A was 14 dB compare to 17.8 dB in case of cluster B; a difference of 3.8 dB. For similar setup in case of $operator\ B$, a difference of 4 dB was recorded for $operator\ B$; this indicates co-existence interference between the neighboring devices do exist during the deployment scenarios.
+Figure \ref{fig:SINR distribution} present the signal to interference noise ratio distribution for co-existence scenario, created in TalTech lab. During the analysis, it was observed, $operator\ A$, the median SINR ratio for cluster A was 14 dB compare to 17.8 dB in case of cluster B; a difference of 3.8 dB. For similar setup in case of $operator\ B$, a difference of 4 dB was recorded for $operator\ B$; this indicates co-existence interference between the neighboring devices do exist during the deployment scenarios.
 
-\subsubsection{Discussion}
+\subsubsection{Summary}
 
 
-These experiments provided the comprehensive overview of the empirical results and study that investigated the current deployment of Sigfox and NB-IoT network in Estonia. Results from different scenarios i.e., Outdoor, Indoor, and Deep-Indoor were evaluated to find the answers for our foremost research questions. The results prove that, the radio parameters changes with respect to many physical factors like building structure, deployment scenarios, building occupancy in terms of active mobile users e.t.c, in indoor scenario, we had observed fluctuations in RSSI in both operators during the working hours; also similar observations were noticed in RSRP and RSRQ in deep-indoor scenarios. This indicates, the traffic from the active LTE users and neighboring small and macro cells affects the NB-IoT signal strengths, since they all are deployed in same PRB as discussed in section \ref{NB-IoT Technology} but similar fluctuation were not observed in Sigfox, due to the fact, it uses UNB technology  as discussed in section \ref{sigfox technical}.\par
+ The results prove that, the radio parameters changes with respect to many physical factors like building structure, deployment scenarios, building occupancy in terms of active mobile users e.t.c, in indoor scenario, we had observed fluctuations in RSSI in both operators during the working hours; also similar observations were noticed in RSRP and RSRQ in deep-indoor scenarios. This indicates, the traffic from the active LTE users and neighboring small and macro cells affects the NB-IoT signal strengths, since they all are deployed in same PRB as discussed in section \ref{NB-IoT Technology} but similar fluctuation were not observed in Sigfox, due to the fact, it uses UNB technology  as discussed in section \ref{sigfox technical}.\par
 
 In indoor scenario, another most phenomenon case was observed at Delta building of University of Tartu, where there were no packet losses even though with very weaker coverage strength. This indicates NB-IoT is reliable over other competitive LPWAN technologies. However, this feature comes at the price of energy consumption due to repetitions of packets as we discussed previously in section \ref{NB-IoT Technology}. Futhermore, it was noted a important observation, some spots at University of Tartu had NB-IoT outages in-spite of good LTE coverage strength which indicates NB-IoT device registration depends on PRB of base station; also on deployment scheme i.e., in band, guard band or standalone configured by the MNO. \par
 
@@ -1581,12 +1603,13 @@ These above inferences helped us to answer our RQ1 and RQ2, whose objective was 
 
 To understand, the interference, among the co-existence deployment condition we measured the SINR parameter (detailed in section \ref{snr}) of two small clusters A and B, it was observed that SINR median value were higher for cluster B compared to cluster A (containing signgle device). Although, the difference is not so high considering our small scale setup, but this helped us to infer; interference due to co-existence deployment exists, thus answers to our RQ3. 
 
+One thing important to note is, these results were taken in urban cities of Estonia, one can expect different measurements depending on the size of city, mobile coverage density, building structure, urban planning of the city, e.t.c., However, these measurements can be considered as reference points for future scale of the study.
 \newpage
 \section{Conclusion and Future Work} \label{conclusion}
  
-This thesis provided the comprehensive technical over view, along withe real-time coverage analysis of NB-IoT and Sigfox in two university campuses of Estonia in two main cities (Tartu and Tallinn). We have based our analysis on multiple RF parameters since, RSSI is most of the time not sufficient for evaluating LTE-based technologies including NB-IoT. Thus, our investigation of NB-IoT coverage considers three parameters:  RSSI,RSRP, and RSRQ. Sigfox, being a non-LTE technology, we based our coverage analysis only on the RSSI factor. These technologies were evaluated in different scenarios indoor, outdoor and deep-indoor/underground environments to better comprehend their radio parameters so as to provide an understanding of their coverage in various propagation and penetration conditions. Our results prove that in outdoor scenarios, both Sigfox and NB-IoT achieved good to excellent coverage with almost0\% packet losses. However, in indoor scenarios, few packet losses were observed in Sigfox while no packet losses were observed in NB-IoT, even with a weaker coverage, possibly due to re-transmissions which makes NB-IoT more reliable than its competitive LPWAN technologies. However, in deep-indoor or underground scenarios, coverage outages were recorded for NB-IoT, especially in Tartu area, indicating its weaker coverage in that city.\par
+This thesis provided the comprehensive technical over view, along withe real-time coverage analysis of NB-IoT and Sigfox in two university campuses of Estonia in two main cities (Tartu and Tallinn). We have based our analysis on multiple RF parameters since, RSSI is most of the time not sufficient for evaluating LTE-based technologies including NB-IoT. Thus, our investigation of NB-IoT coverage considers three parameters:  RSSI,RSRP, and RSRQ. Sigfox, being a non-LTE technology, we based our coverage analysis only on the RSSI factor. These technologies were evaluated in different scenarios indoor, outdoor and deep-indoor/underground environments to better comprehend their radio parameters so as to provide an understanding of their coverage in various propagation and penetration conditions. Our results proved that, in outdoor scenarios, both Sigfox and NB-IoT achieved good to excellent coverage with almost0\% packet losses. However, in indoor scenarios, few packet losses were observed in Sigfox while no packet losses were observed in NB-IoT, even with a weaker coverage, possibly due to re-transmissions which makes NB-IoT more reliable than its competitive LPWAN technologies. However, in deep-indoor or underground scenarios, coverage outages were recorded for NB-IoT, especially in Tartu area, indicating its weaker coverage in that city.\par
 
-These results can  be further used as a reference point by operators, telecom engineers, students and researchers who are currently working on or interested in LPWAN technology.\par 
+These results can be further used as a reference point by operators, telecom engineers, students and researchers who are currently working on or interested in LPWAN technology.\par 
 
 As a part of future works, there are many research topics that can be carried further:
 \begin{itemize}
@@ -1602,34 +1625,13 @@ As a part of future works, there are many research topics that can be carried fu
 \emph{The work carried out in this thesis is submitted as a research paper titled "Coverage Analysis of NB-IoT and Sigfox: Two Estonian University Campuses as a Case Study" in 16\textsuperscript{th} International  Wireless Communications \& Mobile Computing Conference (IWCMC 2020), submitted in February 2020; status is under review.}
 
 
-\newpage
+
 
 % BibTeX bibliography
 %\bibliographystyle{alpha} %plain=[1], alpha=[BGZ09]
 %\bibliography{bachelor-thesis}
 
 \addcontentsline{toc}{section}{\refname}
-
-
-% Use Biblatex if you have problems with Estonian keywords
-%\printbibliography %biblatex
-
-
-
-% Use alternative local LaTeX bibliography
-\begin{comment}
-\begin{thebibliography}{9}
-\bibitem{proVerif} 
-  Bruno Blanchet. 
-  Proverif: Cryptographic protocol verifier in the formal model.
-  \url{http://www.proverif.ens.fr/}.
-  (checked 15.05.2012)
-\bibitem{GameB_1} GameB1
-\bibitem{GameB_2} GameB2
-\bibitem{certicrypt} certicrypt
-\bibitem{kamm12} kamm12
-\end{thebibliography}
-\end{comment}
 
 
 \newpage
@@ -1646,15 +1648,61 @@ As a part of future works, there are many research topics that can be carried fu
 \section*{I. Glossary}
 \addcontentsline{toc}{subsection}{I. Glossary}
 
+\begin{table}[H]
+\resizebox{0.5\columnwidth}{!}{
+\begin{tabular}{ll}
+3GPP         & Third Generation Partnership Project          \\
+APAC         & Asia Pacific Region                           \\
+AS           & Access Strum                                  \\
+ASK          & Amplitude Shift Keying                        \\
+BPSK         & Binary Phase-shift Keying                     \\
+CSS          & Chirp Spread Spectrum                         \\
+DBPSK        & Differential Binary Phase Shift Keying        \\
+eDRX         & Extended Discontinuous Receive                \\
+EMEA         & Europe Middle East and Africa Region          \\
+eNB - eNodeB & E-UTRAN Node B                                \\
+FSK          & Frequency Shift Keying                        \\
+GPRS         & General Packet Radio Service                  \\
+IoT          & Internet of Things                            \\
+IP           & Internet Protocol                             \\
+LoRa         & Long Range                                    \\
+LPWAN        & Low-Power Wide-Area-Network                   \\
+LTE          & Long Term Evolution                           \\
+M2M          & Machine to Machine                            \\
+MCL          & Maximum Coupling Loss                         \\
+MNO          & Mobile Network Operator                       \\
+OFDMA        & Orthogonal Frequency Division Multiple Access \\
+PRB          & Physical Resource Block                       \\
+PS           & Packet Switched                               \\
+PSK          & Phase Shift Keying                            \\
+QAM          & Quadrature Amplitude Modulation               \\
+QoS          & Quality of Service                            \\
+QPSK         & Quadrature Phase Shift Keying                 \\
+RAN          & Radio Access Network                          \\
+RF           & Radio Frequency                               \\
+RRC          & Radio Resource Control                        \\
+RSRP         & Received Signal Received Power                \\
+RSRQ         & Reference Signal Received Quality             \\
+RSSI         & Received Signal Strength Indicator            \\
+SIM          & Subscriber Identity Module                    \\
+SINR         & Signal to Interference Noise Ratio            \\
+TalTech      & Tallinn University of Technology              \\
+TCP          & Transmission Control Protocol                 \\
+UART         & Universal Asynchronous Receiver Transmitter   \\
+UDP          & User Datagram Protocol                        \\
+UNB          & Ultra Narrow Band                             \\
+UT           & University of Tartu                          
+\end{tabular}}
+\end{table}
 \newpage
 
 %=== Licence in English
 \newcommand{\licencehint}[2]{\\\hspace*{#1}\textsl(#2)\par}
 \newcommand\EngLicence{{%
 \selectlanguage{english}
-\section*{II. Licence}
+\section*{III. Licence}
 
-\addcontentsline{toc}{subsection}{II. Licence}
+\addcontentsline{toc}{subsection}{III. Licence}
 
 \subsection*{Non-exclusive licence to reproduce thesis and make thesis public}
 
@@ -1667,10 +1715,10 @@ herewith grant the University of Tartu a free permit (non-exclusive licence) to
 \par
 reproduce, for the purpose of preservation, including for adding to the DSpace digital archives until the expiry of the term of copyright,
 \par
-\textbf{ Coverage Analysis of NB-IoT and Sigfox:Two Estonian University Campuses as a Case Study}, %
+\textbf{ Coverage Analysis of LPWAN in Estonia:Sigfox and NB-IoT Case study in Tallinn and Tartu}, %
   \licencehint{10mm}{title of thesis}
 \par
-supervised by Jakob Mass and co-supervised by Sikandar Khan. %supervisor's name
+supervised by Jakob Mass and co-supervised by Sikandar Zulqarnain Khan. %supervisor's name
   \licencehint{10mm}{supervisor's name}
 \item
 I grant the University of Tartu a permit to make the work specified in p. 1 available to the public via the web environment of the University of Tartu, including via the DSpace digital archives, under the Creative Commons licence CC BY NC ND 3.0, which allows, by giving appropriate credit to the author, to reproduce, distribute the work and communicate it to the public, and prohibits the creation of derivative works and any commercial use of the work until the expiry of the term of copyright.
