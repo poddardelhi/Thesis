@@ -1239,7 +1239,7 @@ For our measurement campaign, we have used the Avnet Silica NB-IoT shield which 
 \end{figure}
 %-----fig25 ends here------
 
-To answer RQ2, we had inserted NB-IoT nodes with narrow band SIM cards from the two different MNO i.e., Telia and Elisa (they have been anonymously referred as operator A and operator B since the aim of the thesis is not to prove one operator to be better than the other), These nodes are programmed to send the RF parameters to Ubidots using the UDP protocol, for 30 minutes interval containing RSSI, SNR, RSRP, RSRQ, and RSRP. The algorithm of the node is designed such a way that it goes into power saving mode (deep-sleep) after transmitting the the packet, thus saving the battery. The working of these nodes are explained by the help of flow chart, see Figure \ref{fig:NB-IoT node code flowchart diagram}. 
+To answer RQ2, we had inserted NB-IoT nodes with narrow band SIM cards from the two different MNO i.e., Telia and Elisa (they have been anonymously referred as operator A and operator B since the aim of the thesis is not to prove one operator to be better than the other), These nodes are programmed to send the RF parameters to Ubidots using the UDP protocol, for 30 minutes interval containing RSSI, SNR, RSRP, RSRQ, and RSRP. The algorithm of the node is designed such a way that it goes into power saving mode (deep-sleep) after transmitting the the packet, thus saving the battery. The working of these nodes are explained by the help of flow chart; the AT commands used in programming the NB-IoT nodes are taken from Quectel BG96 AT commands manual\footnote{https://www.quectel.com/UploadImage/Downlad/Quectel\_BG96\_AT\_Commands\_Manual\_V2.1.pdf} and BG96 TCP/IP AT Commands Manual\footnote{https://www.quectel.com/UploadImage/Downlad/Quectel\_BG96\_TCP(IP)\_AT\_Commands\_Manual\_V1.0.pdf}, see Figure \ref{fig:NB-IoT node code flowchart diagram}. 
 
 
 %---fig 26 ---nbiot flowchart----
@@ -1603,7 +1603,7 @@ These above inferences helped us to answer our RQ1 and RQ2, whose objective was 
 
 To understand, the interference, among the co-existence deployment condition we measured the SINR parameter (detailed in section \ref{snr}) of two small clusters A and B, it was observed that SINR median value were higher for cluster B compared to cluster A (containing signgle device). Although, the difference is not so high considering our small scale setup, but this helped us to infer; interference due to co-existence deployment exists, thus answers to our RQ3. 
 
-One thing important to note is, these results were taken in urban cities of Estonia, one can expect different measurements depending on the size of city, mobile coverage density, building structure, urban planning of the city, e.t.c., However, these measurements can be considered as reference points for future scale of the study.
+One thing important to note is, these results were taken in urban cities of Estonia under the current NB-IoT and Sigfox deployment, one can expect different measurements depending on the size of city, mobile coverage density, building structure, urban planning of the city, e.t.c., However, these measurements can be considered as reference points for future study.
 \newpage
 \section{Conclusion and Future Work} \label{conclusion}
  
@@ -1755,7 +1755,7 @@ reproduce, for the purpose of preservation, including for adding to the DSpace d
 \textbf{ Coverage Analysis of LPWAN in Estonia:Sigfox and NB-IoT Case study in Tallinn and Tartu}, %
   \licencehint{10mm}{title of thesis}
 \par
-supervised by Jakob Mass and co-supervised by Sikandar Zulqarnain Khan. %supervisor's name
+supervised by Jakob Mass and co-supervised by Sikandar Khan. %supervisor's name
   \licencehint{10mm}{supervisor's name}
 \item
 I grant the University of Tartu a permit to make the work specified in p. 1 available to the public via the web environment of the University of Tartu, including via the DSpace digital archives, under the Creative Commons licence CC BY NC ND 3.0, which allows, by giving appropriate credit to the author, to reproduce, distribute the work and communicate it to the public, and prohibits the creation of derivative works and any commercial use of the work until the expiry of the term of copyright.
